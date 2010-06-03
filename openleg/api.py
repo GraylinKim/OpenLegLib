@@ -4,7 +4,8 @@ import json
 import re
 
 _supportedGetTypes = set(['meeting','transcript','bill'])
-_supportedSearchTypes = set(['bill','vote','action','transcript','meeting','calendar'])
+_supportedSearchTypes = set(['bill','vote','action','transcript',
+                             'meeting','calendar'])
 _supportedModes = set(['html','xml','csv','json','object'])
 _supportedVersions = [1.0]
 _baseURL = 'http://open-staging.nysenate.gov/legislation'
@@ -19,44 +20,61 @@ class OpenLegislation:
         self.setMode(mode)
         self.setPageSize(pagesize)
     
-    def bill(self,billId):
-        return OpenLegislationQuery('get',self.mode,billId,'bill',None,None,self.pagesize,self.version)
-        
-    def meeting(self,committee,number,session):
-        assert number>0, 'Meeting number must be natural number (integer > 0)'
-        assert re.match('\d{4}-\d{4}',session), 'Invalid session '+str(session)
-        meetingid = '-'.join(['meeting',str(committee),str(number),str(session)])
-        return OpenLegislationQuery('get',self.mode,meetingid,'meeting',None,None,self.pagesize,self.version)
-        
-    def transcript(self,transcriptId):
-        return OpenLegislationQuery('get',self.mode,transcriptId,'transcript',None,None,self.pagesize,self.version)
-        
-    def search(self,search="",types=[],sponsor=None,committee=None):
-        return OpenLegislationQuery('search',self.mode,search,types,sponsor,committee,self.pagesize,self.version)
-        
-    def searchFullText(self,search="",types=[],sponsor=None,committee=None):
-        return OpenLegislationQuery('search',self.mode,'full:('+search+')',types,sponsor,committee,self.pagesize,self.version)
-    
-    def searchMemo(self,search="",types=[],sponsor=None,committee=None):
-        return OpenLegislationQuery('search',self.mode,'memo:('+search+')',types,sponsor,committee,self.pagesize,self.version)
-    
     def setPageSize(self,pagesize):
-        if pagesize<=0:
-            msg = 'Pagesize (%i) must be positive natural numbers.'
+        if not pagesize>0:
+            msg = 'Invalid page size %i. Must be greater than zero.'
             raise OpenLegislationError(msg % pagesize)
+            
         self.pagesize = pagesize
     
     def setMode(self,mode):
         if not mode.lower() in _supportedModes:
             msg = 'Mode %s is not supported. Supported modes are %s.'
             raise OpenLegislationError(msg % (mode,_supportedModes))
+            
         self.mode = mode.lower()
         
     def setVersion(self,version):
         if not float(version) in _supportedVersions:
             msg = 'Version %s is not supported. Supported versions are %s.'
             raise OpenLegislationError(msg % (version,_supportedVersions))
+            
         self.version = version.lower()
+    
+    def bill(self,billId):
+        return OpenLegislationQuery('get',self.mode,billId,'bill',
+                                   None,None,self.pagesize,self.version).fetch()
+        
+    def meeting(self,committee,number,session):
+        if not number>0:
+            msg = 'Invalid meeting number %i. Must be greater than zero.'
+            raise OpenLegislationError(msg % number)
+        if not re.match('\d{4}-\d{4}',session):
+            msg = 'Invalid session %s. Must match ####-####.'
+            raise OpenLegislationError(msg % number)
+            
+        meeting = '-'.join(['meeting',str(committee),str(number),str(session)])
+        return OpenLegislationQuery('get',self.mode,meeting,'meeting',
+                                   None,None,self.pagesize,self.version).fetch()
+        
+    def transcript(self,transcriptId):
+        return OpenLegislationQuery('get',self.mode,transcriptId,'transcript',
+                                   None,None,self.pagesize,self.version).fetch()
+        
+    def search(self,search="",types=[],sponsor=None,committee=None):
+        return OpenLegislationQuery('search',self.mode,search,
+                                    types,sponsor,committee,self.pagesize,
+                                    self.version)
+        
+    def searchFullText(self,search="",types=[],sponsor=None,committee=None):
+        return OpenLegislationQuery('search',self.mode,'full:('+search+')',
+                                    types,sponsor,committee,self.pagesize,
+                                    self.version)
+    
+    def searchMemo(self,search="",types=[],sponsor=None,committee=None):
+        return OpenLegislationQuery('search',self.mode,'memo:('+search+')',
+                                    types,sponsor,committee,self.pagesize,
+                                    self.version)
 
 class OpenLegislationQueryBase:
     
@@ -81,9 +99,11 @@ class OpenLegislationQueryBase:
         return OpenLegislationQuerySet(self,query2,'NOT')
     
     def url(self,page=1):
-        #Adjust mode when objects are being returned
+        #Creating objects requires json formatted data
         mode = 'json' if self.mode == 'object' else self.mode
-        assert page>0, 'Page number must be greater than zero'
+        if not page>0:
+            msg = 'Invalid page number %i. Must be greater than zero.'
+            raise OpenLegislationError(msg % page)
         
         if self.qtype == 'search':
             term = self._buildString()
