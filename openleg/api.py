@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 import urllib
+import json
 import re
 
+_supportedGetTypes = set(['meeting','transcript','bill'])
+_supportedSearchTypes = set(['bill','vote','action','transcript','meeting','calendar'])
+_supportedModes = set(['html','xml','csv','json','object'])
+_supportedVersions = [1.0]
+_baseURL = 'http://open-staging.nysenate.gov/legislation'
+
+class OpenLegislationError(Exception):
+    pass
+    
 class OpenLegislation:
     
-    #Note: Calendars are not supported because they are not yet stable
-    supportedGetTypes = set(['meeting','transcript','bill'])
-    supportedSearchTypes = set(['bill','vote','action','transcript','meeting','calendar'])
-    supportedModes = set(['html','xml','csv','json','object'])
-    supportedVersions = [1.0]
-    objectDataType = 'json'
-    
-    def __init__(self,version='1.0',mode='json',pagesize=20):
-        """Provide defaults for ease of use"""
+    def __init__(self,version='1.0',mode='object',pagesize=20):
         self.setVersion(version)
         self.setMode(mode)
         self.setPageSize(pagesize)
@@ -29,47 +31,45 @@ class OpenLegislation:
     def transcript(self,transcriptId):
         return OpenLegislationQuery('get',self.mode,transcriptId,'transcript',None,None,self.pagesize,self.version)
         
-    def search(self,string="",types=[],sponsor=None,committee=None):
-        return OpenLegislationQuery('search',self.mode,string,types,sponsor,committee,self.pagesize,self.version)
+    def search(self,search="",types=[],sponsor=None,committee=None):
+        return OpenLegislationQuery('search',self.mode,search,types,sponsor,committee,self.pagesize,self.version)
         
-    def searchFullText(self,string="",types=[],sponsor=None,committee=None):
-        string = 'full:('+string+')'
-        return OpenLegislationQuery('search',self.mode,string,types,sponsor,committee,self.pagesize,self.version)
+    def searchFullText(self,search="",types=[],sponsor=None,committee=None):
+        return OpenLegislationQuery('search',self.mode,'full:('+search+')',types,sponsor,committee,self.pagesize,self.version)
     
-    def searchMemo(self,string="",types=[],sponsor=None,committee=None):
-        string = 'memo:('+string+')'
-        return OpenLegislationQuery('search',self.mode,string,types,sponsor,committee,self.pagesize,self.version)
+    def searchMemo(self,search="",types=[],sponsor=None,committee=None):
+        return OpenLegislationQuery('search',self.mode,'memo:('+search+')',types,sponsor,committee,self.pagesize,self.version)
     
     def setPageSize(self,pagesize):
-        """Assert Valid Page size before setting"""
-        assert pagesize>0 and pagesize<100,'Pagesize ('+str(pagesize)+') must be between 1 and 100'
+        if pagesize<=0:
+            msg = 'Pagesize (%i) must be positive natural numbers.'
+            raise OpenLegislationError(msg % pagesize)
         self.pagesize = pagesize
     
     def setMode(self,mode):
-        """Assert supported mode before setting"""
-        assert mode.lower() in self.supportedModes,'Mode '+mode+' is not supported'
+        if not mode.lower() in _supportedModes:
+            msg = 'Mode %s is not supported. Supported modes are %s.'
+            raise OpenLegislationError(msg % (mode,_supportedModes))
         self.mode = mode.lower()
         
     def setVersion(self,version):
-        """Assert supported version before setting"""
-        assert float(version) in self.supportedVersions,'Version '+str(version)+' is not supported'
+        if not float(version) in _supportedVersions:
+            msg = 'Version %s is not supported. Supported versions are %s.'
+            raise OpenLegislationError(msg % (version,_supportedVersions))
         self.version = version.lower()
 
 class OpenLegislationQueryBase:
     
-    baseURL = 'http://open-staging.nysenate.gov/legislation'
-    supportedGetTypes = set(['meeting','transcript','bill'])
-    supportedSearchTypes = set(['bill','vote','action','transcript','meeting','calendar'])
-    
-    def fetch(page=1):
+    def fetch(self,page=1):
         request = urllib.urlopen(self.url(page))
-        assert request.getcode() == 200, 'Error Code '+str(request.getcode())
+        if request.getcode() != 200:
+            msg = 'Error Code: %i on request'
+            raise OpenLegislationError(msg % request.getcode())
         
-        data = request.read()
-        if name == 'object':
-            return data
+        if self.mode == 'object':
+            return json.load(request)[0]
         else:
-            return data
+            return request.read()
     
     def AND(self,query2):
         return OpenLegislationQuerySet(self,query2,'AND')
@@ -95,43 +95,37 @@ class OpenLegislationQueryBase:
                     'format':mode
                 }.iteritems()
             ])
-            return '/'.join( [self.baseURL,'search','?'+args] )
+            return '/'.join( [_baseURL,'search','?'+args] )
             
         elif self.qtype == 'get':    
             string = urllib.quote_plus(self.string)
-            return '/'.join( [self.baseURL,'api',self.version,mode,self.type,string] )
+            return '/'.join( [_baseURL,'api',self.version,mode,self.type,string] )
         
 class OpenLegislationQuerySet(OpenLegislationQueryBase):
 
     def __init__(self,query1,query2,join):
-        assert query1.qtype == 'search', "only search queries can be joined"
-        assert query2.qtype == 'search', "only search queries can be joined"
-        self.query1 = query1
-        self.query2 = query2
-        self.join = join
+        if query1.qtype != 'search' or query1.qtype != 'search':
+            msg = "Cannot join a %s and a %s query. Only searches can be joined"
+            raise OpenLegislationError(msg % (query1.qtype,query2.qtype))
+        self.__dict__.update(locals())
         
     def __getattr__(self,name):
         return getattr(self.query1,name)
     
     def _buildString(self):
-        halves = ['('+x._buildString()+')' for x in [self.query1, self.query2]]
-        return (' '+self.join+' ').join(halves)
+        return (' '+self.join+' ').join([
+            '('+x._buildString()+')' for x in [self.query1, self.query2]
+        ])
 
 class OpenLegislationQuery(OpenLegislationQueryBase):
     
     def __init__(self,qtype,mode,string="",types=[],sponsor=None,committee=None,pagesize=20,version=1.0):
         qtype = qtype.lower()
+        string = str(string)
         assert qtype=='get' or qtype=='search',"Invalid query type ("+qtype+"). Use 'get' or 'set'"
         assert qtype=='search' or not types==[],"Get requests must have a type specified"
-        
-        self.qtype = qtype
-        self.string = str(string)
         self.type = str(types) if qtype == 'get' else set(types)
-        self.sponsor = sponsor
-        self.committee = committee
-        self.pagesize = pagesize
-        self.version = version
-        self.mode = mode
+        self.__dict__.update(locals())
         
     def _buildString(self):
         """Builds the full search string from all specified options"""
@@ -149,7 +143,7 @@ class OpenLegislationQuery(OpenLegislationQueryBase):
             otypes = ' OR '.join(['otype:'+object for object in self.type])
             prefix = prefix+' AND ('+otypes+')' if prefix else '('+otypes+')'
         if self.string:
-            return self.string if not prefix else prefix+' AND ('+self.string+')'
+            return prefix+' AND ('+self.string+')' if prefix else self.string
         else:
             return prefix
 
