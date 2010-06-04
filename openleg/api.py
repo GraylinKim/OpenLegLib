@@ -41,42 +41,36 @@ class OpenLegislation:
             
         self.version = version.lower()
     
-    def bill(self,billId):
-        return OpenLegislationQuery('get',self.mode,billId,'bill',
-                                   None,None,self.pagesize,self.version).fetch()
+    def bill(self,bill):
+        return OpenLegislationFind(
+            self.mode,bill,'bill',self.version
+        )
+        
+    def transcript(self,transcript):
+        return OpenLegislationFind(
+            self.mode,transcript,'transcript',self.version
+        )
         
     def meeting(self,committee,number,session):
         if not number>0:
             msg = 'Invalid meeting number %i. Must be greater than zero.'
             raise OpenLegislationError(msg % number)
-        if not re.match('\d{4}-\d{4}',session):
-            msg = 'Invalid session %s. Must match ####-####.'
+        if not re.match('\d{4}',session):
+            msg = 'Invalid session %s. Must match ####.'
             raise OpenLegislationError(msg % number)
             
         meeting = '-'.join(['meeting',str(committee),str(number),str(session)])
-        return OpenLegislationQuery('get',self.mode,meeting,'meeting',
-                                   None,None,self.pagesize,self.version).fetch()
+        return OpenLegislationFind(
+            self.mode,meeting,'meeting',self.version
+        )
         
-    def transcript(self,transcriptId):
-        return OpenLegislationQuery('get',self.mode,transcriptId,'transcript',
-                                   None,None,self.pagesize,self.version).fetch()
-        
-    def search(self,search="",types=[],sponsor=None,committee=None):
-        return OpenLegislationQuery('search',self.mode,search,
-                                    types,sponsor,committee,self.pagesize,
-                                    self.version)
-        
-    def searchFullText(self,search="",types=[],sponsor=None,committee=None):
-        return OpenLegislationQuery('search',self.mode,'full:('+search+')',
-                                    types,sponsor,committee,self.pagesize,
-                                    self.version)
-    
-    def searchMemo(self,search="",types=[],sponsor=None,committee=None):
-        return OpenLegislationQuery('search',self.mode,'memo:('+search+')',
-                                    types,sponsor,committee,self.pagesize,
-                                    self.version)
+    def search(self,search="",fulltext="",memo=""):
+        fulltext = 'full:(%s)' % fulltext if fulltext else fulltext
+        memo = 'memo:(%s)' % memo if memo else memo
+        search = ' OR '.join(filter(lambda x: x!="",[search,memo,fulltext]))
+        return OpenLegislationSearch(self.mode,search,self.pagesize,self.version)
 
-class OpenLegislationQueryBase:
+class OpenLegislationBase:
     
     def fetch(self,page=1):
         request = urllib.urlopen(self.url(page))
@@ -85,48 +79,108 @@ class OpenLegislationQueryBase:
             raise OpenLegislationError(msg % request.getcode())
         
         if self.mode == 'object':
-            return json.load(request)[0]
+            data = json.load(request)
+            return data[0] if len(data)==0 else data
         else:
             return request.read()
+
+class OpenLegislationFind(OpenLegislationBase):
     
-    def AND(self,query2):
-        return OpenLegislationQuerySet(self,query2,'AND')
-        
-    def OR(self,query2):
-        return OpenLegislationQuerySet(self,query2,'OR')
-        
-    def NOT(self,query2):
-        return OpenLegislationQuerySet(self,query2,'NOT')
+    def __init__(self,mode,objid,objtype,version=1.0):
+        if not objtype in _supportedGetTypes:
+            msg = 'Invalid get type %s. Valid types are %s'
+            raise OpenLegislationError(msg % (objtype,_supportedGetTypes))
+            
+        self.__dict__.update(locals())
     
     def url(self,page=1):
-        #Creating objects requires json formatted data
+        if not page>0:
+            msg = 'Invalid page number %i. Must be greater than zero.'
+            raise OpenLegislationError(msg % page)            
         mode = 'json' if self.mode == 'object' else self.mode
+        
+        objid = urllib.quote_plus(str(self.objid))
+        return '/'.join( [_baseURL,'api',self.version,mode,self.objtype,objid] )
+
+class OpenLegislationSearch(OpenLegislationBase):
+    
+    def __init__(self,mode,search="",pagesize=20,version=1.0):
+        self.__dict__.update(locals())
+        self.__dict__.update({
+            'qsponsors':None,
+            'qtypes':None,
+            'qcommittees':None,
+            'qlocations':list()
+        })
+        
+    def url(self,page=1):
         if not page>0:
             msg = 'Invalid page number %i. Must be greater than zero.'
             raise OpenLegislationError(msg % page)
-        
-        if self.qtype == 'search':
-            term = self._buildString()
-            args = '&'.join([
+        mode = 'json' if self.mode == 'object' else self.mode
+
+        return '/'.join([
+            _baseURL,'search',
+            '?'+'&'.join([
                 key+'='+str(value) for key,value in {
-                    'term':urllib.quote_plus(term),
+                    'term':urllib.quote_plus(self._buildString()),
                     'pageIdx':page,
                     'pageSize':self.pagesize,
                     'format':mode
                 }.iteritems()
-            ])
-            return '/'.join( [_baseURL,'search','?'+args] )
-            
-        elif self.qtype == 'get':    
-            string = urllib.quote_plus(self.string)
-            return '/'.join( [_baseURL,'api',self.version,mode,self.type,string] )
+            ]),
+        ])
         
-class OpenLegislationQuerySet(OpenLegislationQueryBase):
+    def AND(self,query2):
+        return OpenLegislationSet(self,query2,'AND')
+        
+    def OR(self,query2):
+        return OpenLegislationSet(self,query2,'OR')
+        
+    def NOT(self,query2):
+        return OpenLegislationSet(self,query2,'NOT')
+    
+    def type(self,type):
+        return self.types([type])
+    def types(self,types):
+        if not set(types).issubset(_supportedSearchTypes):
+            msg = "Invalid type %s. Valid types are %s."
+            raise OpenLegislationError(msg % (types,_supportedSearchTypes))
+        self.qtypes = types
+        return self
+        
+    def committee(self,committee):
+        return self.committees([committee])
+    def committees(self,committees):
+        self.qcommittees = committees
+        return self
+        
+    def sponsor(self,sponsor):
+        self.sponsors([sponsor])
+    def sponsors(self,sponsors):
+        self.qsponsors = sponsors
+        return self
+        
+    def _buildString(self):
+        """Builds the full search string from all specified options"""
+        prefix = ""
+        if self.qcommittees:
+            committee = ' OR '.join(['committee:'+committee for committee in self.qcommittees])
+            prefix = prefix+' AND '+committee if prefix else committee
+        if self.qsponsors:
+            sponsor = ' OR '.join(['sponsor:'+sponsor for sponsor in self.qsponsors])
+            prefix = prefix+' AND '+sponsor if prefix else sponsor
+        if self.qtypes:
+            otypes = ' OR '.join(['otype:'+object for object in self.qtypes])
+            prefix = prefix+' AND ('+otypes+')' if prefix else '('+otypes+')'
+        if self.search:
+            return prefix+' AND ('+self.search+')' if prefix else self.search
+        else:
+            return prefix
+
+class OpenLegislationSet(OpenLegislationSearch):
 
     def __init__(self,query1,query2,join):
-        if query1.qtype != 'search' or query1.qtype != 'search':
-            msg = "Cannot join a %s and a %s query. Only searches can be joined"
-            raise OpenLegislationError(msg % (query1.qtype,query2.qtype))
         self.__dict__.update(locals())
         
     def __getattr__(self,name):
@@ -137,47 +191,18 @@ class OpenLegislationQuerySet(OpenLegislationQueryBase):
             '('+x._buildString()+')' for x in [self.query1, self.query2]
         ])
 
-class OpenLegislationQuery(OpenLegislationQueryBase):
-    
-    def __init__(self,qtype,mode,string="",types=[],sponsor=None,committee=None,pagesize=20,version=1.0):
-        qtype = qtype.lower()
-        string = str(string)
-        assert qtype=='get' or qtype=='search',"Invalid query type ("+qtype+"). Use 'get' or 'set'"
-        assert qtype=='search' or not types==[],"Get requests must have a type specified"
-        self.type = str(types) if qtype == 'get' else set(types)
-        self.__dict__.update(locals())
-        
-    def _buildString(self):
-        """Builds the full search string from all specified options"""
-        if self.qtype == 'get':
-            return self.string
-            
-        prefix = ""
-        if self.committee:
-            committee = 'committee:'+self.committee
-            prefix = prefix+' AND '+committee if prefix else committee
-        if self.sponsor:
-            sponsor = 'sponsor:'+self.sponsor
-            prefix = prefix+' AND '+sponsor if prefix else sponsor
-        if self.type:
-            otypes = ' OR '.join(['otype:'+object for object in self.type])
-            prefix = prefix+' AND ('+otypes+')' if prefix else '('+otypes+')'
-        if self.string:
-            return prefix+' AND ('+self.string+')' if prefix else self.string
-        else:
-            return prefix
-
-
 if __name__ == '__main__':
     
-    openLeg = OpenLegislation()
+    openLeg = OpenLegislation(mode='object')
+    
     queries = [
         openLeg.bill('S66002'),
-        openLeg.meeting('AGING',11,'2009-2010'),
-        openLeg.transcript(350),
-        openLeg.search('health*',types=['bill'],committee='AGING'),
-        openLeg.search(committee='health'),
-        openLeg.searchFullText('medicare OR medicaid').NOT(openLeg.search(committee='health')),
+        #openLeg.meeting('AGING',11,'2009-2010'),
+        openLeg.transcript(297),
+        
+        openLeg.search('health*').type('bill').committee('AGING'),
+        openLeg.search().committee('health'),
+        openLeg.search(fulltext='medicare OR medicaid').NOT(openLeg.search().committee('health')),
     ]
     
     for query in queries:
