@@ -1,0 +1,21 @@
+# Sphinx inventory version 1
+# Project: NYSS Open Legislation Python Library
+# Version: 0
+api.OpenLegislation.setPagesize method index.html
+api.OpenLegislation.setVersion method index.html
+api.OpenLegislationSearch.sponsors method index.html
+api.OpenLegislationSearch.url attribute index.html
+api.OpenLegislationSearch class index.html
+api.NOT function index.html
+api.OR function index.html
+api.OpenLegislation.transcript method index.html
+api.OpenLegislation.search method index.html
+api.OpenLegislationSearch.types method index.html
+api.OpenLegislationSearch.fetch method index.html
+api.OpenLegislationSet class index.html
+api.OpenLegislation.bill method index.html
+api.OpenLegislationError class index.html
+api.OpenLegislation class index.html
+api.OpenLegislationSearch.committees method index.html
+api.OpenLegislation.setMode method index.html
+api.AND function index.html

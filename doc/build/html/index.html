@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to NYSS Open Legislation Python Library’s documentation! &mdash; NYSS Open Legislation Python Library v0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NYSS Open Legislation Python Library v0 documentation" href="" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="">NYSS Open Legislation Python Library v0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-nyss-open-legislation-python-library-s-documentation">
+<span id="overview"></span><h1>Welcome to NYSS Open Legislation Python Library&#8217;s documentation!<a class="headerlink" href="#welcome-to-nyss-open-legislation-python-library-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>OpenLegislation is an legislative information service run by the New York
+State Senate. This is a library to allow developers to quickly and effectively
+search through the available information and pull down specific documents.</p>
+<p>This is a guide to the proper use of the library and should serve as a
+tutorial for some of Open Legislations advanced search features. All examples
+assume that default client settings have been preserved.</p>
+<div class="section" id="catching-exceptions">
+<span id="exceptions"></span><h2>Catching Exceptions<a class="headerlink" href="#catching-exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="api.OpenLegislationError">
+<em class="property">
+class </em><tt class="descclassname">api.</tt><tt class="descname">OpenLegislationError</tt><a class="headerlink" href="#api.OpenLegislationError" title="Permalink to this definition">¶</a></dt>
+<dd>Exception raised when OpenLegislation classes or functions are given
+invalid input or are being used inappropriately.</dd></dl>
+
+<p>Before we get started, you should know what happens when things go wrong. All
+OpenLegislation classes and functions will through a <em>OpenLegislationError</em>
+when they are given bad input, are being used inappropriately, or (currently)
+get a bad response from the server (working on something better for this).</p>
+</div>
+<div class="section" id="creating-the-client">
+<span id="create"></span><h2>Creating the Client<a class="headerlink" href="#creating-the-client" title="Permalink to this headline">¶</a></h2>
+<p>The OpenLegislation class acts as the gateway class to the API and serves two
+purposes. First, it holds various default parameters for request construction.
+See <a class="reference internal" href="#defaults"><em>Customizing Defaults</em></a> for detailed information. Second, it acts as a generator
+for OpenLegislation <a class="reference internal" href="#getting"><em>Get Requests</em></a> and <a class="reference internal" href="#searching"><em>Search Requests</em></a>.</p>
+<dl class="class">
+<dt id="api.OpenLegislation">
+<em class="property">
+class </em><tt class="descclassname">api.</tt><tt class="descname">OpenLegislation</tt><big>(</big><em>mode='object'</em>, <em>pagesize=20</em>, <em>version=1.0</em><big>)</big><a class="headerlink" href="#api.OpenLegislation" title="Permalink to this definition">¶</a></dt>
+<dd><p>The client for interacting with the OpenLegislation API</p>
+<p>A default client can be created with an empty constructor</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg = OpenLegislation()</span>
+<span class="go">&gt;&gt;&gt;[openleg.mode, openleg.pagesize, openleg.version]</span>
+<span class="go">[&#39;object&#39;, 20, 1.0]</span>
+</pre></div>
+</div>
+<p>While the default settings for the client are generally recommended, you
+may decide you require different settings.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg = OpenLegislation(mode=&#39;json&#39;,pagesize=100,version=1.0)</span>
+<span class="go">&gt;&gt;&gt;[openleg.mode, openleg.pagesize, openleg.version]</span>
+<span class="go">[&#39;json&#39;, 100, 1.0]</span>
+</pre></div>
+</div>
+<p>When invalid arguments are given, an OpenLegislationError will be thrown</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;OpenLegislation(mode=&#39;csv&#39;)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">OpenLegislationError</span>: <span class="n-Identifier">Mode csv is not supported. Supported modes are set([&#39;xml&#39;, &#39;json&#39;, &#39;html&#39;, &#39;object&#39;]).</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>While the settings for your client can later be changed, the changes will not
+be reflected in queries you have already instanciated</p>
+</div>
+<div class="section" id="customizing-defaults">
+<span id="defaults"></span><h2>Customizing Defaults<a class="headerlink" href="#customizing-defaults" title="Permalink to this headline">¶</a></h2>
+<p>These functions are used in the class constructor to create the initial state
+for the client. If you find you need to change its settings after creation
+you can call upon the following functions to do so.</p>
+<div class="section" id="mode">
+<h3>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="api.OpenLegislation.setMode">
+<tt class="descclassname">OpenLegislation.</tt><tt class="descname">setMode</tt><big>(</big><em>mode</em><big>)</big><a class="headerlink" href="#api.OpenLegislation.setMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the default format of data returned by queries</p>
+<p>Modes available are: html, xml, json, and object</p>
+<p>Object mode (the default) returns data in the form of a dictionary
+parsed from json data using the json.load from the core library.</p>
+<p>Usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.setMode(&#39;json&#39;)</span>
+<span class="go">&gt;&gt;&gt;openleg.mode</span>
+<span class="go">&#39;json&#39;</span>
+</pre></div>
+</div>
+<p>When attempting to set an unsupported mode an exception will be thrown:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.setMode(&#39;csv&#39;)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">OpenLegislationError</span>: <span class="n-Identifier">Mode csv is not supported. Supported modes are set([&#39;xml&#39;, &#39;json&#39;, &#39;html&#39;, &#39;object&#39;]).</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="pagesize">
+<h3>Pagesize<a class="headerlink" href="#pagesize" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="api.OpenLegislation.setPagesize">
+<tt class="descclassname">OpenLegislation.</tt><tt class="descname">setPagesize</tt><big>(</big><em>pagesize</em><big>)</big><a class="headerlink" href="#api.OpenLegislation.setPagesize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the default number of results returned on each page for searches</p>
+<p>This number must be a positive integer but (as far as I know) has no
+upper bounds (I&#8217;ve tried as high as 10,000). Higher numbers will lead
+to longer response time for many searches.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.setPagesize(100)</span>
+<span class="go">&gt;&gt;&gt;openleg.pagesize</span>
+<span class="go">100</span>
+</pre></div>
+</div>
+<p>When attempting to set an invalid pagesize an exception will be thrown</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.setPagesize(-10)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">OpenLegislationError</span>: <span class="n-Identifier">Invalid page size -10. Must be greater than zero.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="version-api">
+<h3>Version (API)<a class="headerlink" href="#version-api" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="api.OpenLegislation.setVersion">
+<tt class="descclassname">OpenLegislation.</tt><tt class="descname">setVersion</tt><big>(</big><em>version</em><big>)</big><a class="headerlink" href="#api.OpenLegislation.setVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the default version of OpenLegislation for handling requests</p>
+<p>The only valid version number right now is 1.0. Just leave this as 
+default. If for some reason you try to set it yourself to something
+different (unsupported) an OpenLegislationError will be raised.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.setVersion(2.0)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">OpenLegislationError</span>: <span class="n-Identifier">Version 2.0 is not supported. Supported versions are [1.0].</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>As stated above, while the settings for your client can be changed, the
+changes you make will not be reflected in search queries you have already
+created.</p>
+</div>
+</div>
+<div class="section" id="get-requests">
+<span id="getting"></span><h2><em>Get</em> Requests<a class="headerlink" href="#get-requests" title="Permalink to this headline">¶</a></h2>
+<p>Get requests are automatically evaluated by the client and will return data
+in the form specified by the current client state. In the case that you don&#8217;t
+know the unique ID for what you are looking for, please see <a class="reference internal" href="#searching"><em>Search Requests</em></a>.</p>
+<dl class="method">
+<dt id="api.OpenLegislation.bill">
+<tt class="descclassname">OpenLegislation.</tt><tt class="descname">bill</tt><big>(</big><em>ID</em><big>)</big><a class="headerlink" href="#api.OpenLegislation.bill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills a request for data on a bill idenfied by its bill number.
+Returns the raw (or processed for object mode) data from the
+OpenLegislation server for the bill identified (by senate bill id).</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.bill(&#39;S66002&#39;)[&#39;title&#39;]</span>
+<span class="go">u&#39;Enacts into law major components of legislation necessary for the</span>
+<span class="go">efficient operation of local governments; repealer&#39;</span>
+</pre></div>
+</div>
+<p>If there is an input error, (input is not a valid bill number), an
+OpenLegislationError is raised indicating a 500 error code was returned
+from the OpenLegislation server. Server errors will get their own type
+of exception in the future to separate server errors and library errors.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.bill(&#39;S022&#39;)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">OpenLegislationError: Error Code</span>: <span class="n-Identifier">500 on request</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.OpenLegislation.transcript">
+<tt class="descclassname">OpenLegislation.</tt><tt class="descname">transcript</tt><big>(</big><em>ID</em><big>)</big><a class="headerlink" href="#api.OpenLegislation.transcript" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills a request for transcript data identified by transcript number.
+Returns the raw (or processed for object mode) data from the 
+OpenLegislation server for the transcript requested.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.transcript(297)[&#39;timestamp&#39;]</span>
+<span class="go">u&#39;Sun Feb 07 10:00:00 EST 2010&#39;</span>
+</pre></div>
+</div>
+<p>If there is an input error, (input is invalid transcript id), an
+OpenLegislationError is raised indicating a 500 error code was returned
+from the OpenLegislation server. Server errors will get their own type
+of exception in the future to separate server errors and library errors.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.transcript(100)</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="nc">OpenLegislationError: Error Code</span>: <span class="n-Identifier">500 on request</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>Meetings and Calendars in OpenLegislation are currently broken across the
+different return types. Their corresponding <em>Get</em> Requests will be renabled
+when they become safe and stable.</p>
+</div>
+<div class="section" id="search-requests">
+<span id="searching"></span><h2><em>Search</em> Requests<a class="headerlink" href="#search-requests" title="Permalink to this headline">¶</a></h2>
+<p>When you make a search request with your OpenLegislation client it passes back
+an OpenLegislationSearch object (<a class="reference internal" href="#advanced"><em>Advanced Searching</em></a> for more details) instead of
+evaluating immediately (like the <a class="reference internal" href="#getting"><em>Get Requests</em></a>)</p>
+<dl class="method">
+<dt id="api.OpenLegislation.search">
+<tt class="descclassname">OpenLegislation.</tt><tt class="descname">search</tt><big>(</big><em>search=''</em>, <em>fulltext=''</em>, <em>memo=''</em><big>)</big><a class="headerlink" href="#api.OpenLegislation.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an OpenLegislationSearch object for search requests by
+wrapping the supplied keywords in appropriate syntax. These keywords
+are processed by Lucene and can handle the following basic synatx:</p>
+<ul class="simple">
+<li>&#8216;*&#8217;: Your basic wildcard. &#8216;health*&#8217; will match healthcare, health, 
+and healthy</li>
+<li>&#8216;~&#8217;: Fuzzy searching. Matches things similar to the word input
+#TODO: Find examples of fuzzy searching</li>
+<li>&#8216;AND&#8217;,&#8217;OR&#8217;,&#8217;NOT&#8217;: Logical operators. e.g. &#8216;health* NOT medicare&#8217;
+will find all results containing health* words but not pertaining to
+medicare.</li>
+<li>&#8216;()&#8217;: Grouping. e.g. (health* NOT medicare) OR medicaid</li>
+</ul>
+<p>To search all fields of the bill use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search(&quot;search text&quot;) #defaults to search</span>
+</pre></div>
+</div>
+<p>To search the text of the bill only:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search(fulltext=&quot;search text&quot;)</span>
+</pre></div>
+</div>
+<p>To search the memo of the bill only:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search(memo=&quot;search text&quot;)</span>
+</pre></div>
+</div>
+<p>To search a combination of things combined by an OR</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search(fulltext=&quot;health*&quot;,memo=&quot;dollars&quot;)</span>
+</pre></div>
+</div>
+<p>The above code will search for health* in the full bill text OR dollars
+in the memo of the bill</p>
+</dd></dl>
+
+<p>In order to evaluate the request you must call the fetch method and specify
+the page to be fetched.</p>
+<dl class="method">
+<dt id="api.OpenLegislationSearch.fetch">
+<tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">fetch</tt><big>(</big><em>page=1</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch.fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieves a results page from OpenLegislation.</p>
+<p>Returns raw (processed when in object mode) data from the server</p>
+</dd></dl>
+
+</div>
+<div class="section" id="advanced-searching">
+<span id="advanced"></span><h2>Advanced Searching<a class="headerlink" href="#advanced-searching" title="Permalink to this headline">¶</a></h2>
+<p>The OpenLegislationSearch object can also be used to perform advanced searches
+in OpenLegislation through the use of filters.</p>
+<dl class="class">
+<dt id="api.OpenLegislationSearch">
+<em class="property">
+class </em><tt class="descclassname">api.</tt><tt class="descname">OpenLegislationSearch</tt><big>(</big><em>mode</em>, <em>search=''</em>, <em>pagesize=20</em>, <em>version=1.0</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>The search request class for the OpenLegislation Library.</p>
+<p>Should not be instanciated outside of the OpenLegislation class. Instead,
+use the search method of the OpenLegislation class:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search(&#39;health*&#39;)</span>
+<span class="go">&lt;openleg.api.OpenLegislationSearch instance at 0xa1c2dcc&gt;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="#searching"><em>Search Requests</em></a> for more details on using openleg.search(...)</p>
+<p>When searches are modified with filters and logical operations, new objects
+are created such that the original objects remain unchanged.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="api.OpenLegislationSearch.url">
+<tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">url</tt><a class="headerlink" href="#api.OpenLegislationSearch.url" title="Permalink to this definition">¶</a></dt>
+<dd>The request URL, constructed from the search arguments provided</dd></dl>
+
+<dl class="method">
+<dt id="api.OpenLegislationSearch.types">
+<tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">types</tt><big>(</big><em>typelist</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch.types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters results to results of the listed types. Supported types include:
+- [&#8216;bill&#8217;,&#8217;vote&#8217;,&#8217;action&#8217;,&#8217;transcript&#8217;,&#8217;meeting&#8217;,&#8217;calendar&#8217;]</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().types([&#39;bills&#39;,&#39;votes&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.OpenLegislationSearch.sponsors">
+<tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">sponsors</tt><big>(</big><em>sponsorlist</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch.sponsors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters results to those (co)sponsored by the listed sponsors</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().sponsors([&#39;Alesi&#39;,&#39;Adams&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.OpenLegislationSearch.committees">
+<tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">committees</tt><big>(</big><em>committeelist</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch.committees" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters results to results overseen by any of the listed committees</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().committees([&#39;Aging&#39;,&#39;Health&#39;])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>In addition to the above methods there are also special methods for
+filtering with one item by passing a string instead of a list.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().type(&#39;bill&#39;)</span>
+<span class="go">&gt;&gt;&gt;openleg.search().committee(&#39;Aging&#39;).type(&#39;bill&#39;)</span>
+<span class="go">&gt;&gt;&gt;openleg.search().sponsor(&#39;Kruger&#39;).committee(&#39;Aging&#39;)</span>
+</pre></div>
+</div>
+<p>These advanced searches can then be logically manipulated using the following
+logical operatations.</p>
+<dl class="function">
+<dt id="api.AND">
+<tt class="descclassname">api.</tt><tt class="descname">AND</tt><big>(</big><em>q1</em>, <em>q2</em><big>)</big><a class="headerlink" href="#api.AND" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a request representing the intersection of two result sets</dd></dl>
+
+<dl class="function">
+<dt id="api.OR">
+<tt class="descclassname">api.</tt><tt class="descname">OR</tt><big>(</big><em>q1</em>, <em>q2</em><big>)</big><a class="headerlink" href="#api.OR" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a request representing the union of the two result sets</dd></dl>
+
+<dl class="function">
+<dt id="api.NOT">
+<tt class="descclassname">api.</tt><tt class="descname">NOT</tt><big>(</big><em>q1</em>, <em>q2</em><big>)</big><a class="headerlink" href="#api.NOT" title="Permalink to this definition">¶</a></dt>
+<dd>Returns a request representing the first result minus the items in
+the second result</dd></dl>
+
+<p>All logical operations return an OpenLegislationSet.</p>
+<dl class="class">
+<dt id="api.OpenLegislationSet">
+<em class="property">
+class </em><tt class="descclassname">api.</tt><tt class="descname">OpenLegislationSet</tt><big>(</big><em>query1</em>, <em>query2</em>, <em>join</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSet" title="Permalink to this definition">¶</a></dt>
+<dd>Class returned by all logical operations (AND,OR,NOT). Behaves in an
+identical mannor to an OpenLegislationSearch object and gets its attribute
+values from the first Seach object passed to the operations.</dd></dl>
+
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="genindex.html"><em>Index</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Welcome to NYSS Open Legislation Python Library&#8217;s documentation!</a><ul>
+<li><a class="reference external" href="#catching-exceptions">Catching Exceptions</a></li>
+<li><a class="reference external" href="#creating-the-client">Creating the Client</a></li>
+<li><a class="reference external" href="#customizing-defaults">Customizing Defaults</a><ul>
+<li><a class="reference external" href="#mode">Mode</a></li>
+<li><a class="reference external" href="#pagesize">Pagesize</a></li>
+<li><a class="reference external" href="#version-api">Version (API)</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#get-requests"><em>Get</em> Requests</a></li>
+<li><a class="reference external" href="#search-requests"><em>Search</em> Requests</a></li>
+<li><a class="reference external" href="#advanced-searching">Advanced Searching</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="">NYSS Open Legislation Python Library v0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Graylin Kim.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+    </div>
+  </body>
+</html>
