@@ -380,20 +380,3 @@ def NOT(q1,q2):
     """Returns a request representing the first result minus the items in
     the second result"""
     return OpenLegislationSet(q1,q2,'NOT')
-    
-if __name__ == '__main__':
-    
-    openLeg = OpenLegislation(mode='object')
-    finds = [
-        openLeg.bill('S66002'),
-        openLeg.transcript(297),
-    ]
-    
-    searches = [        
-        openLeg.search('health*').types('bill').committees('AGING'),
-        openLeg.search().committees('health'),
-        NOT( openLeg.search(fulltext='medicare OR medicaid'),openLeg.search().committees('health') ),
-    ]
-    
-    for query in searches:
-        print urllib.unquote_plus(query.url)
