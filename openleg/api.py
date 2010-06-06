@@ -320,11 +320,9 @@ class OpenLegislationSearch():
     
     def __getattr__(self,name):
         if name in ['types','committees','sponsors']:
-            def listFunc(values):
-                if isinstance(values,str):
-                    values = [values]
+            def listFunc(*args):
                 new = copy.deepcopy(self)
-                setattr(new,'q'+name,values)
+                setattr(new,'q'+name,args)
                 return new
             return listFunc
         raise AttributeError(name)
@@ -380,3 +378,8 @@ def NOT(q1,q2):
     """Returns a request representing the first result minus the items in
     the second result"""
     return OpenLegislationSet(q1,q2,'NOT')
+    
+if __name__ == '__main__':
+    
+    openleg = OpenLegislation()
+    query = openleg.search().types('bill','transcript')

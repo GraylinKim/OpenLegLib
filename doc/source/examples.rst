@@ -202,7 +202,7 @@ the Aging and Health committees.
 .. testcode::
 
     >>> #notice that multiple values (case insensitive) are wrapped in a list
-    >>> commquery = billquery.committees(['Aging','Health'])
+    >>> commquery = billquery.committees('Aging','Health')
     >>> #results not included
     
 If we were starting from scratch and we wanted this query, we could take
@@ -210,7 +210,7 @@ advantage of chaining.
 
 .. testcode::
     
-    >>> query = openleg.search('health*').types('bill').committees(['Aging','Health'])
+    >>> query = openleg.search('health*').types('bill').committees('Aging','Health')
     
 Logical Manipulation
 ------------------------
@@ -222,7 +222,7 @@ the Aging or Health committees? We could use the NOT operator.
 
     >>> query = NOT(
     ...     openleg.search('health*').types('bill'),
-    ...     openleg.search().committees(['Aging','Health'])
+    ...     openleg.search().committees('Aging','Health')
     ... )
     
 See the :doc:`full documentation <index>` for more details.

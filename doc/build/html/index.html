@@ -310,7 +310,7 @@ are created such that the original objects remain unchanged.</p>
 <tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">types</tt><big>(</big><em>typelist</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch.types" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filters results to results of the listed types. Supported types include:
 - [&#8216;bill&#8217;,&#8217;vote&#8217;,&#8217;action&#8217;,&#8217;transcript&#8217;,&#8217;meeting&#8217;,&#8217;calendar&#8217;]</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().types([&#39;bills&#39;,&#39;votes&#39;])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().types(&#39;bills&#39;,&#39;votes&#39;)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -319,7 +319,7 @@ are created such that the original objects remain unchanged.</p>
 <dt id="api.OpenLegislationSearch.sponsors">
 <tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">sponsors</tt><big>(</big><em>sponsorlist</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch.sponsors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filters results to those (co)sponsored by the listed sponsors</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().sponsors([&#39;Alesi&#39;,&#39;Adams&#39;])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().sponsors(&#39;Alesi&#39;,&#39;Adams&#39;)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -328,18 +328,11 @@ are created such that the original objects remain unchanged.</p>
 <dt id="api.OpenLegislationSearch.committees">
 <tt class="descclassname">OpenLegislationSearch.</tt><tt class="descname">committees</tt><big>(</big><em>committeelist</em><big>)</big><a class="headerlink" href="#api.OpenLegislationSearch.committees" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filters results to results overseen by any of the listed committees</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().committees([&#39;Aging&#39;,&#39;Health&#39;])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().committees(&#39;Aging&#39;,&#39;Health&#39;)</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<p>When we only wish to specify a single item in the filter, we can pass in a
-string instead of a list.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().types(&#39;bill&#39;)</span>
-<span class="go">&gt;&gt;&gt;openleg.search().committees(&#39;Aging&#39;).types(&#39;bill&#39;)</span>
-<span class="go">&gt;&gt;&gt;openleg.search().sponsors(&#39;Kruger&#39;).committees(&#39;Aging&#39;)</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="applying-set-logic">
 <h3>Applying Set Logic<a class="headerlink" href="#applying-set-logic" title="Permalink to this headline">¶</a></h3>

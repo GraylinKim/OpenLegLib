@@ -129,7 +129,7 @@ in OpenLegislation through the use of filters.
     
     .. testcode::
     
-        >>>openleg.search().types(['bills','votes'])
+        >>>openleg.search().types('bills','votes')
         
 .. method:: OpenLegislationSearch.sponsors(sponsorlist)    
     
@@ -137,7 +137,7 @@ in OpenLegislation through the use of filters.
     
     .. testcode::
     
-        >>>openleg.search().sponsors(['Alesi','Adams'])
+        >>>openleg.search().sponsors('Alesi','Adams')
         
 .. method:: OpenLegislationSearch.committees(committeelist)
 
@@ -145,16 +145,8 @@ in OpenLegislation through the use of filters.
     
     .. testcode::
 
-        >>>openleg.search().committees(['Aging','Health'])
-            
-When we only wish to specify a single item in the filter, we can pass in a 
-string instead of a list.
+        >>>openleg.search().committees('Aging','Health')
 
-.. testcode::
-
-    >>>openleg.search().types('bill')
-    >>>openleg.search().committees('Aging').types('bill')
-    >>>openleg.search().sponsors('Kruger').committees('Aging')
       
 Applying Set Logic
 """""""""""""""""""""

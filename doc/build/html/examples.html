@@ -218,13 +218,13 @@ more defined search.</p>
 sponsor (<em>sponsors(...)</em>). Lets filter the remaining bills down to those under
 the Aging and Health committees.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c">#notice that multiple values (case insensitive) are wrapped in a list</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">commquery</span> <span class="o">=</span> <span class="n">billquery</span><span class="o">.</span><span class="n">committees</span><span class="p">([</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">commquery</span> <span class="o">=</span> <span class="n">billquery</span><span class="o">.</span><span class="n">committees</span><span class="p">(</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c">#results not included</span>
 </pre></div>
 </div>
 <p>If we were starting from scratch and we wanted this query, we could take
 advantage of chaining.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;health*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">types</span><span class="p">(</span><span class="s">&#39;bill&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">committees</span><span class="p">([</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;health*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">types</span><span class="p">(</span><span class="s">&#39;bill&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">committees</span><span class="p">(</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -234,7 +234,7 @@ advantage of chaining.</p>
 the Aging or Health committees? We could use the NOT operator.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="n">NOT</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;health*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">types</span><span class="p">(</span><span class="s">&#39;bill&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">()</span><span class="o">.</span><span class="n">committees</span><span class="p">([</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">])</span>
+<span class="gp">... </span>    <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">()</span><span class="o">.</span><span class="n">committees</span><span class="p">(</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
