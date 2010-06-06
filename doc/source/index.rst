@@ -20,6 +20,9 @@ This is a guide to the proper use of the library and should serve as a
 tutorial for some of Open Legislations advanced search features. All examples
 assume that default client settings have been preserved.
 
+If you want to dive in and see some examples, check out the 
+:doc:`examples </examples>`.
+
 .. _exceptions:
 
 Catching Exceptions

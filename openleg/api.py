@@ -247,7 +247,6 @@ class OpenLegislationGet():
         self.__dict__.update(locals())
     
     def fetch(self):
-        print self.url
         request = _fetch(self.url)
         if self.mode == 'object':
             return json.load(request)[0]
