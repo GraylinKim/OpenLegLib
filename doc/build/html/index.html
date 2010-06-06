@@ -45,6 +45,8 @@ search through the available information and pull down specific documents.</p>
 <p>This is a guide to the proper use of the library and should serve as a
 tutorial for some of Open Legislations advanced search features. All examples
 assume that default client settings have been preserved.</p>
+<p>If you want to dive in and see some examples, check out the
+<a class="reference external" href="examples.html"><em>examples</em></a>.</p>
 <div class="section" id="catching-exceptions">
 <span id="exceptions"></span><h2>Catching Exceptions<a class="headerlink" href="#catching-exceptions" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -278,6 +280,8 @@ the page to be fetched.</p>
 </div>
 <div class="section" id="advanced-searching">
 <span id="advanced"></span><h2>Advanced Searching<a class="headerlink" href="#advanced-searching" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-filters">
+<h3>Using Filters<a class="headerlink" href="#using-filters" title="Permalink to this headline">¶</a></h3>
 <p>The OpenLegislationSearch object can also be used to perform advanced searches
 in OpenLegislation through the use of filters.</p>
 <dl class="class">
@@ -329,15 +333,17 @@ are created such that the original objects remain unchanged.</p>
 </div>
 </dd></dl>
 
-<p>In addition to the above methods there are also special methods for
-filtering with one item by passing a string instead of a list.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().type(&#39;bill&#39;)</span>
-<span class="go">&gt;&gt;&gt;openleg.search().committee(&#39;Aging&#39;).type(&#39;bill&#39;)</span>
-<span class="go">&gt;&gt;&gt;openleg.search().sponsor(&#39;Kruger&#39;).committee(&#39;Aging&#39;)</span>
+<p>When we only wish to specify a single item in the filter, we can pass in a
+string instead of a list.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;openleg.search().types(&#39;bill&#39;)</span>
+<span class="go">&gt;&gt;&gt;openleg.search().committees(&#39;Aging&#39;).types(&#39;bill&#39;)</span>
+<span class="go">&gt;&gt;&gt;openleg.search().sponsors(&#39;Kruger&#39;).committees(&#39;Aging&#39;)</span>
 </pre></div>
 </div>
-<p>These advanced searches can then be logically manipulated using the following
-logical operatations.</p>
+</div>
+<div class="section" id="applying-set-logic">
+<h3>Applying Set Logic<a class="headerlink" href="#applying-set-logic" title="Permalink to this headline">¶</a></h3>
+<p>Additionally, searches can be logically manipulated with using AND,OR, and NOT.</p>
 <dl class="function">
 <dt id="api.AND">
 <tt class="descclassname">api.</tt><tt class="descname">AND</tt><big>(</big><em>q1</em>, <em>q2</em><big>)</big><a class="headerlink" href="#api.AND" title="Permalink to this definition">¶</a></dt>
@@ -363,6 +369,7 @@ class </em><tt class="descclassname">api.</tt><tt class="descname">OpenLegislati
 identical mannor to an OpenLegislationSearch object and gets its attribute
 values from the first Seach object passed to the operations.</dd></dl>
 
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -391,7 +398,11 @@ values from the first Seach object passed to the operations.</dd></dl>
 </li>
 <li><a class="reference external" href="#get-requests"><em>Get</em> Requests</a></li>
 <li><a class="reference external" href="#search-requests"><em>Search</em> Requests</a></li>
-<li><a class="reference external" href="#advanced-searching">Advanced Searching</a></li>
+<li><a class="reference external" href="#advanced-searching">Advanced Searching</a><ul>
+<li><a class="reference external" href="#using-filters">Using Filters</a></li>
+<li><a class="reference external" href="#applying-set-logic">Applying Set Logic</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference external" href="#indices-and-tables">Indices and tables</a></li>

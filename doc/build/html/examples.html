@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Learn By Example! &mdash; NYSS Open Legislation Python Library v0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NYSS Open Legislation Python Library v0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">NYSS Open Legislation Python Library v0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="learn-by-example">
+<h1>Learn By Example!<a class="headerlink" href="#learn-by-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To get us started we&#8217;ll import the API and create an instance of the default
+client. This will allow us to work with native python dictionaries and put a
+reasonable limit on the number of search results on each page.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;from openleg import api</span>
+<span class="go">&gt;&gt;&gt;openleg = api.OpenLegislation()</span>
+</pre></div>
+</div>
+<p>Additionally, we&#8217;ll create a pretty printer to allow us to more easily examine
+our results</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;import pprint</span>
+<span class="go">&gt;&gt;&gt;pp = pprint.PrettyPrinter(indent=4)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="manipulating-results">
+<h2>Manipulating Results<a class="headerlink" href="#manipulating-results" title="Permalink to this headline">¶</a></h2>
+<p>When working with any results in object mode, its important to note that they
+are really just dictionaries and can/should be worked with as such.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;bill = openleg.bill(&#39;S66002&#39;)</span>
+<span class="go">&gt;&gt;&gt;pp.pprint(bill)</span>
+<span class="go">{   u&#39;actions&#39;: [   {   u&#39;action&#39;: u&#39;SIGNED CHAP.494 - Nov 12, 2009&#39;,</span>
+<span class="go">                        u&#39;timestamp&#39;: u&#39;1258002000000&#39;},</span>
+<span class="go">                        ...]</span>
+<span class="go">    u&#39;cosponsors&#39;: [],</span>
+<span class="go">    u&#39;senateId&#39;: u&#39;S66002&#39;,</span>
+<span class="go">    u&#39;sponsor&#39;: u&#39;STEWART-COUSINS&#39;,</span>
+<span class="go">    u&#39;summary&#39;: u&#39;Enacts into law major components of legislation necessary for the efficient operation of local governments. &#39;,</span>
+<span class="go">    u&#39;title&#39;: u&#39;Enacts into law major components of legislation necessary for the efficient operation of local governments; repealer&#39;,</span>
+<span class="go">    u&#39;votes&#39;: [   {   u&#39;abstains&#39;: u&#39;0&#39;,</span>
+<span class="go">                      u&#39;ayes&#39;: u&#39;59&#39;,</span>
+<span class="go">                      u&#39;excused&#39;: u&#39;1&#39;,</span>
+<span class="go">                      u&#39;nays&#39;: u&#39;2&#39;,</span>
+<span class="go">                      u&#39;timestamp&#39;: u&#39;1257829200000&#39;,</span>
+<span class="go">                      u&#39;voters&#39;: [   {   u&#39;name&#39;: u&#39;ADAMS&#39;, u&#39;vote&#39;: u&#39;aye&#39;},</span>
+<span class="go">                                     ...]},</span>
+<span class="go">                  {   u&#39;ayes&#39;: u&#39;20&#39;,</span>
+<span class="go">                      u&#39;excused&#39;: u&#39;1&#39;,</span>
+<span class="go">                      u&#39;nays&#39;: u&#39;3&#39;,</span>
+<span class="go">                      u&#39;timestamp&#39;: u&#39;1257829200000&#39;,</span>
+<span class="go">                      u&#39;voters&#39;: [   {   u&#39;name&#39;: u&#39;SMITH&#39;, u&#39;vote&#39;: u&#39;aye&#39;},</span>
+<span class="go">                                     ...]},</span>
+<span class="go">    u&#39;year&#39;: 2009}</span>
+</pre></div>
+</div>
+<p>From this you can see the organization of information within a bill. Lets try
+to print out a list of all the actions taken in chronological order. We&#8217;ll
+reformat the string for ease of reading while we&#8217;re at it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">reversed</span><span class="p">(</span><span class="n">bill</span><span class="p">[</span><span class="s">&#39;actions&#39;</span><span class="p">]):</span>
+<span class="gp">... </span>        <span class="k">print</span> <span class="s">&#39; - &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">reversed</span><span class="p">(</span><span class="n">action</span><span class="p">[</span><span class="s">&#39;action&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;-&#39;</span><span class="p">)))</span>
+<span class="gp">...</span>
+<span class="go"> Nov 10, 2009 - substituted for a40002</span>
+<span class="go"> Nov 10, 2009 - ruling of chair on point of order</span>
+<span class="go"> Nov 10, 2009 - returned to senate</span>
+<span class="go"> Nov 10, 2009 - referred to codes</span>
+<span class="go"> Nov 10, 2009 - passed assembly</span>
+<span class="go"> Nov 10, 2009 - ordered to third reading rules cal.679</span>
+<span class="go"> Nov 10, 2009 - REFERRED TO RULES</span>
+<span class="go"> Nov 10, 2009 - PASSED SENATE</span>
+<span class="go"> Nov 10, 2009 - ORDERED TO THIRD READING CAL.1</span>
+<span class="go"> Nov 10, 2009 - 3 DAY MESSAGE</span>
+<span class="go"> Nov 10, 2009 - DELIVERED TO GOVERNOR</span>
+<span class="go"> Nov 10, 2009 - DELIVERED TO ASSEMBLY</span>
+<span class="go"> Nov 12, 2009 - SIGNED CHAP.494</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="searching">
+<h2>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
+<p>Searching has two steps. First is query construction using the OpenLegislation
+client. Second is fetching a page of the results from the server.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;query = openleg.search(&#39;health*&#39;)</span>
+<span class="go">&gt;&gt;&gt;results = query.fetch()</span>
+</pre></div>
+</div>
+<p>Lets take a look at what kind of results we got.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c">#truncate long titles</span>
+<span class="gp">... </span>    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">][</span><span class="mf">0</span><span class="p">:</span><span class="mf">77</span><span class="p">]</span><span class="o">+</span><span class="s">&#39;...&#39;</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">])</span><span class="o">&gt;</span><span class="mf">80</span><span class="p">)</span> <span class="k">else</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="c">#format the output</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;(</span><span class="si">%s</span><span class="s">) </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">],</span><span class="n">title</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">(transcript) REGULAR SESSION - Jul 9, 2009 3:30 AM</span>
+<span class="go">(transcript) REGULAR SESSION - Jul 15, 2009 7:58 AM</span>
+<span class="go">(transcript) REGULAR SESSION - Jul 16, 2009 12:56 PM</span>
+<span class="go">(transcript) REGULAR SESSION - Sep 10, 2009 3:37 AM</span>
+<span class="go">(transcript) EXTRAORDINARY SESSION - Nov 10, 2009 12:19 PM</span>
+<span class="go">(transcript) EXTRAORDINARY SESSION - Nov 24, 2009 12:19 PM</span>
+<span class="go">(transcript) EXTRAORDINARY SESSION - Dec 2, 2009 10:46 AM</span>
+<span class="go">(transcript) Select Committee - Monserrate Investigation - Executive Session - Nov 23, 200...</span>
+<span class="go">(transcript) Select Committee - Monserrate Investigation - Executive Session - Dec 14, 200...</span>
+<span class="go">(transcript) Select Committee - Monserrate Investigation - Executive Session - Dec 29, 200...</span>
+<span class="go">(transcript) REGULAR SESSION - Jan 20, 2010 12:22 PM</span>
+<span class="go">(transcript) None</span>
+<span class="go">(transcript) None</span>
+<span class="go">(transcript) REGULAR SESSION - Feb 1, 2010 3:39 AM</span>
+<span class="go">(meeting) Health - Jan 12, 2010 12:00 PM</span>
+<span class="go">(meeting) Health - Jan 20, 2010 12:00 PM</span>
+<span class="go">(meeting) Health - Feb 2, 2010 12:00 PM</span>
+<span class="go">(meeting) Health - Feb 23, 2010 12:00 PM</span>
+<span class="go">(meeting) Mental Health and Developmental Disabilities - Feb 24, 2010 9:30 AM</span>
+<span class="go">(bill) Establishes a special enrollment period for employees and members with expire...</span>
+</pre></div>
+</div>
+<p>Because searching can often produce a large number of results, pagination
+typically occurs (default number of results per page is 20). Unfortunately
+responses (in JSON) don&#8217;t currently pass back the total number of results, its
+being worked on though. Lets check to see what is on the second page of results.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;results = query.fetch(2) #gets the second page</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c">#truncate long titles</span>
+<span class="gp">... </span>    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">][</span><span class="mf">0</span><span class="p">:</span><span class="mf">77</span><span class="p">]</span><span class="o">+</span><span class="s">&#39;...&#39;</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">])</span><span class="o">&gt;</span><span class="mf">80</span><span class="p">)</span> <span class="k">else</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="c">#format the output</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;(</span><span class="si">%s</span><span class="s">) </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">],</span><span class="n">title</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">(bill) Authorizes the purchase of coverage under family health plus by voluntary emp...</span>
+<span class="go">(bill) Provides for the extension of health insurance coverage to the unmarried chil...</span>
+<span class="go">(bill) Establishes a special enrollment period for employees and members with expire...</span>
+<span class="go">(bill) Establishes a special enrollment period for employees and members with expire...</span>
+<span class="go">(bill) Makes technical corrections to provisions of law relating to rates of payment...</span>
+<span class="go">(bill) Provides for the continuation of health insurance benefits for public employe...</span>
+<span class="go">(bill) Relates to referrals of patients for health related items or services</span>
+<span class="go">(bill) Relates to the N.Y. State Health Care Consumer and Provider Protection and Eq...</span>
+<span class="go">(bill) Amends the education law relating to school based health and mental health cl...</span>
+<span class="go">(bill) Enacts the &quot;minority mental health act&quot; to establish the division of minority...</span>
+<span class="go">(bill) Authorizes health care professionals licensed in other jurisdictions and appo...</span>
+<span class="go">(bill) Enacts the &quot;healthcare rule-making reform act&quot;</span>
+<span class="go">(bill) Authorizes the commissioner of health to establish procedures providing infor...</span>
+<span class="go">(bill) Requires hospitals to disclose any hospital service or health related service...</span>
+<span class="go">(bill) Requires certain health and casualty insurers to provide coverage for prenata...</span>
+<span class="go">(bill) Relates to the rights of health care providers under managed care contracts</span>
+<span class="go">(bill) Relates to overpayments to health care providers when fraud or other intentio...</span>
+<span class="go">(bill) Relates to standards for prompt, fair and equitable settlement of claims for ...</span>
+<span class="go">(bill) Relates to direct access to school-based health centers under child health plus</span>
+<span class="go">(bill) Enacts into law major components of legislation necessary to implement the he...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filters">
+<h2>Filters<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<p>There will be times when we only want to pull down a specific type of result
+in our search. For this we can apply filters to our queries and produce a new
+more defined search.</p>
+<p>Lets limit the results of our &#8216;health*&#8217; search to only bills.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="go">&gt;&gt;&gt;#we can start with the query from above</span>
+<span class="go">&gt;&gt;&gt;billquery = query.types(&#39;bill&#39;) #this does not alter *query*</span>
+<span class="go">&gt;&gt;&gt;results = billquery.fetch()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c">#truncate long titles</span>
+<span class="gp">... </span>    <span class="n">title</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">][</span><span class="mf">0</span><span class="p">:</span><span class="mf">77</span><span class="p">]</span><span class="o">+</span><span class="s">&#39;...&#39;</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">])</span><span class="o">&gt;</span><span class="mf">80</span><span class="p">)</span> <span class="k">else</span> <span class="n">result</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="c">#format the output</span>
+<span class="gp">... </span>    <span class="k">print</span> <span class="s">&#39;(</span><span class="si">%s</span><span class="s"> - </span><span class="si">%s</span><span class="s">) </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">],</span><span class="n">result</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">],</span><span class="n">title</span><span class="p">)</span>
+<span class="go">(bill - S66006) Establishes a special enrollment period for employees and members with expire...</span>
+<span class="go">(bill - S53301) Authorizes the purchase of coverage under family health plus by voluntary emp...</span>
+<span class="go">(bill - S51104) Provides for the extension of health insurance coverage to the unmarried chil...</span>
+<span class="go">(bill - A40006) Establishes a special enrollment period for employees and members with expire...</span>
+<span class="go">(bill - A40000) Establishes a special enrollment period for employees and members with expire...</span>
+<span class="go">(bill - A9944) Makes technical corrections to provisions of law relating to rates of payment...</span>
+<span class="go">(bill - A9943) Provides for the continuation of health insurance benefits for public employe...</span>
+<span class="go">(bill - A9933) Relates to referrals of patients for health related items or services</span>
+<span class="go">(bill - A9871) Relates to the N.Y. State Health Care Consumer and Provider Protection and Eq...</span>
+<span class="go">(bill - A9860) Amends the education law relating to school based health and mental health cl...</span>
+<span class="go">(bill - A9833) Enacts the &quot;minority mental health act&quot; to establish the division of minority...</span>
+<span class="go">(bill - A9829) Authorizes health care professionals licensed in other jurisdictions and appo...</span>
+<span class="go">(bill - A9822) Enacts the &quot;healthcare rule-making reform act&quot;</span>
+<span class="go">(bill - A9797) Authorizes the commissioner of health to establish procedures providing infor...</span>
+<span class="go">(bill - A9792) Requires hospitals to disclose any hospital service or health related service...</span>
+<span class="go">(bill - A9787) Requires certain health and casualty insurers to provide coverage for prenata...</span>
+<span class="go">(bill - A9769) Relates to the rights of health care providers under managed care contracts</span>
+<span class="go">(bill - A9720) Relates to overpayments to health care providers when fraud or other intentio...</span>
+<span class="go">(bill - A9718) Relates to standards for prompt, fair and equitable settlement of claims for ...</span>
+<span class="go">(bill - A9717) Relates to direct access to school-based health centers under child health plus</span>
+</pre></div>
+</div>
+<p>Additional filters exist for filtering by committee (<em>committees(...)</em>) and by
+sponsor (<em>sponsors(...)</em>). Lets filter the remaining bills down to those under
+the Aging and Health committees.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c">#notice that multiple values (case insensitive) are wrapped in a list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">commquery</span> <span class="o">=</span> <span class="n">billquery</span><span class="o">.</span><span class="n">committees</span><span class="p">([</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c">#results not included</span>
+</pre></div>
+</div>
+<p>If we were starting from scratch and we wanted this query, we could take
+advantage of chaining.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;health*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">types</span><span class="p">(</span><span class="s">&#39;bill&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">committees</span><span class="p">([</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="logical-manipulation">
+<h2>Logical Manipulation<a class="headerlink" href="#logical-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>Now what if we wanted to get all the bills matching &#8216;health*&#8217; that were not in
+the Aging or Health committees? We could use the NOT operator.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="n">NOT</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">&#39;health*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">types</span><span class="p">(</span><span class="s">&#39;bill&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">openleg</span><span class="o">.</span><span class="n">search</span><span class="p">()</span><span class="o">.</span><span class="n">committees</span><span class="p">([</span><span class="s">&#39;Aging&#39;</span><span class="p">,</span><span class="s">&#39;Health&#39;</span><span class="p">])</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See the <a class="reference external" href="index.html"><em>full documentation</em></a> for more details.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Learn By Example!</a><ul>
+<li><a class="reference external" href="#getting-started">Getting Started</a></li>
+<li><a class="reference external" href="#manipulating-results">Manipulating Results</a></li>
+<li><a class="reference external" href="#searching">Searching</a></li>
+<li><a class="reference external" href="#filters">Filters</a></li>
+<li><a class="reference external" href="#logical-manipulation">Logical Manipulation</a></li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/examples.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">NYSS Open Legislation Python Library v0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Graylin Kim.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+    </div>
+  </body>
+</html>

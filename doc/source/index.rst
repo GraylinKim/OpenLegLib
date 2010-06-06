@@ -111,6 +111,9 @@ the page to be fetched.
 Advanced Searching
 ^^^^^^^^^^^^^^^^^^^^^
 
+Using Filters
+""""""""""""""""
+
 The OpenLegislationSearch object can also be used to perform advanced searches
 in OpenLegislation through the use of filters.
 
@@ -144,17 +147,19 @@ in OpenLegislation through the use of filters.
 
         >>>openleg.search().committees(['Aging','Health'])
             
-In addition to the above methods there are also special methods for 
-filtering with one item by passing a string instead of a list.
+When we only wish to specify a single item in the filter, we can pass in a 
+string instead of a list.
 
 .. testcode::
 
-    >>>openleg.search().type('bill')
-    >>>openleg.search().committee('Aging').type('bill')
-    >>>openleg.search().sponsor('Kruger').committee('Aging')
-        
-These advanced searches can then be logically manipulated using the following
-logical operatations. 
+    >>>openleg.search().types('bill')
+    >>>openleg.search().committees('Aging').types('bill')
+    >>>openleg.search().sponsors('Kruger').committees('Aging')
+      
+Applying Set Logic
+"""""""""""""""""""""
+
+Additionally, searches can be logically manipulated with using AND,OR, and NOT.
 
 .. autofunction:: AND
 
