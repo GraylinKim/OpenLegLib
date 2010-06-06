@@ -290,13 +290,12 @@ class OpenLegislationSearch():
         
         Returns raw (processed when in object mode) data from the server
         """
-        request = _fetch(self.url)
+        request = _fetch(self.url(page))
         if self.mode == 'object':
             return json.load(request)
         else:
             return request.read()
              
-    @property
     def url(self,page=1):
         """The request URL, constructed from the search arguments provided"""
         if not page>0:
@@ -320,12 +319,10 @@ class OpenLegislationSearch():
         ])
     
     def __getattr__(self,name):
-        if name in ['type','committee','sponsor']:
-            def stringFunc(value):
-                return getattr(self,name+'s')([value])
-            return stringFunc
-        elif name in ['types','committees','sponsors']:
+        if name in ['types','committees','sponsors']:
             def listFunc(values):
+                if isinstance(values,str):
+                    values = [values]
                 new = copy.deepcopy(self)
                 setattr(new,'q'+name,values)
                 return new
@@ -393,9 +390,9 @@ if __name__ == '__main__':
     ]
     
     searches = [        
-        openLeg.search('health*').type('bill').committee('AGING'),
-        openLeg.search().committee('health'),
-        NOT( openLeg.search(fulltext='medicare OR medicaid'),openLeg.search().committee('health') ),
+        openLeg.search('health*').types('bill').committees('AGING'),
+        openLeg.search().committees('health'),
+        NOT( openLeg.search(fulltext='medicare OR medicaid'),openLeg.search().committees('health') ),
     ]
     
     for query in searches:
