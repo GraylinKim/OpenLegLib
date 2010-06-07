@@ -1,8 +1,3 @@
-.. NYSS Open Legislation Python Library documentation master file, created by
-   sphinx-quickstart on Fri Jun  4 11:40:43 2010.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 
 .. currentmodule::  api
 .. moduleauthor::   Graylin Kim <graylin.kim@gmail.com>
@@ -16,9 +11,10 @@ OpenLegislation is an legislative information service run by the New York
 State Senate. This is a library to allow developers to quickly and effectively
 search through the available information and pull down specific documents.
 
-This is a guide to the proper use of the library and should serve as a 
-tutorial for some of Open Legislations advanced search features. All examples
-assume that default client settings have been preserved.
+This is a guide to the proper use of the my 
+`OpenLegislation library <http://github.com/GraylinKim/nyss_openlegislation>`_ 
+and should serve as a tutorial for some of Open Legislations advanced search
+features. All examples assume that default client settings have been preserved.
 
 If you want to dive in and see some examples, check out the 
 :doc:`examples </examples>`.
