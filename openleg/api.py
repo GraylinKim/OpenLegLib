@@ -4,7 +4,7 @@ import json
 import copy
 import re
 
-_baseURL = 'http://open-staging.nysenate.gov/legislation'
+_baseURL = 'http://open.nysenate.gov/legislation'
 
 def _fetch(url):
     request = urllib.urlopen(url)
@@ -18,7 +18,18 @@ _supportedSearchTypes = set(['bill','vote','action','transcript','meeting','cale
 _supportedModes = set(['html','xml','json','object'])
 _supportedJoins = set(['AND','OR','NOT'])
 _supportedVersions = [1.0]
-    
+
+
+_searchIndex = {
+    'all':set('oid','otype','osearch','title','summary','modified'),
+    'bill':set('sponsor','cosponsors','year','sameas','memo','full','committee'),
+    'calendar':set('ctype','when'),
+    'meeting':set('committee','chair','location','notes','when'),
+    'transcript':set('full','when','location','session-type'),
+    'action':set('when','billno','sponsor','cosponsors'),
+    'vote':set('billno','abstain','aye','nay','excused','when','committee'),
+}
+
 class OpenLegislationError(Exception):
     """
     Exception raised when OpenLegislation classes or functions are given
@@ -91,6 +102,7 @@ class OpenLegislation:
             msg = 'Mode %s is not supported. Supported modes are %s.'
             raise OpenLegislationError(msg % (mode,_supportedModes))
         self.mode = mode.lower()
+        return self
         
     def setPagesize(self,pagesize):
         """Sets the default number of results returned on each page for searches
@@ -119,6 +131,7 @@ class OpenLegislation:
             msg = 'Invalid page size %i. Must be greater than zero.'
             raise OpenLegislationError(msg % pagesize)
         self.pagesize = pagesize
+        return self
     
     def setVersion(self,version):
         """Sets the default version of OpenLegislation for handling requests
@@ -139,6 +152,7 @@ class OpenLegislation:
             msg = 'Version %s is not supported. Supported versions are %s.'
             raise OpenLegislationError(msg % (version,_supportedVersions))
         self.version = str(version)
+        return self
     
     def bill(self,ID):
         """Fills a request for data on a bill idenfied by its bill number.
@@ -247,6 +261,7 @@ class OpenLegislationGet():
         self.__dict__.update(locals())
     
     def fetch(self):
+        #print self.url
         request = _fetch(self.url)
         if self.mode == 'object':
             return json.load(request)[0]
