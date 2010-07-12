@@ -1,400 +1,248 @@
-# -*- coding: utf-8 -*-
-import urllib
-import json
 import copy
-import re
+import urllib
+import urllib2
+import json
 
-_baseURL = 'http://open.nysenate.gov/legislation'
+from objects import *
+from decorators import *
+from exceptions import *
+
+################################################################################
+# Configuration
+
+class OpenLegislationConfiguration():
+
+    url = 'http://open.nysenate.gov/legislation/'
+
+    modes = ['html','xml','json','object']
+
+    getTypes = ['bill','calendar','meeting','transcript']
+
+    globalFilters = ['id','type','search','title','summary','modified']
+
+    objectFilters = dict(
+        action=['when','bill','sponsor','cosponsor'],
+        bill=['sponsor','cosponsor','year','sameas','memo','fulltext','committee'],
+        calendar=['ctype','when'],
+        meeting=['committee','chair','location','notes','when'],
+        transcript=['fulltext','when','location','sessiontype'],
+        vote=['bill','committee','when','excused','abstain','aye','nay'],
+        )
+
+    fields = dict(
+        id='oid',                     type='otype',
+        search='osearch',             title='title',
+        summary='summary',            modified='modified',
+        sponsor='sponsor',            cosponsor='cosponsors',
+        year='year',                  sameas='sameas',
+        memo='memo',                  fulltext='full',
+        committee='committee',        ctype='ctype',
+        when='when',                  chair='chair',
+        location='location',          notes='notes',
+        sessiontype='session-type',   bill='billno',
+        abstain='abstain',            excused='excused',
+        aye='aye',                    nay='nay',
+    )
+
+    def __init__(self):
+        self.filters = dict(
+            [key, value+self.globalFilters]
+            for key, value in self.objectFilters.items()
+        )
+
+config = OpenLegislationConfiguration()
+################################################################################
+# Utilities
 
 def _fetch(url):
-    request = urllib.urlopen(url)
+
+    request = urllib2.urlopen(url,timeout=5)
     if request.getcode() != 200:
         msg = 'Error Code: %i on request'
         raise OpenLegislationError(msg % request.getcode())
     return request
-    
-_supportedGetTypes = set(['meeting','transcript','bill'])
-_supportedSearchTypes = set(['bill','vote','action','transcript','meeting','calendar'])
-_supportedModes = set(['html','xml','json','object'])
-_supportedJoins = set(['AND','OR','NOT'])
-_supportedVersions = [1.0]
 
+################################################################################
+# OpenLegislation
 
-_searchIndex = {
-    'all':set('oid','otype','osearch','title','summary','modified'),
-    'bill':set('sponsor','cosponsors','year','sameas','memo','full','committee'),
-    'calendar':set('ctype','when'),
-    'meeting':set('committee','chair','location','notes','when'),
-    'transcript':set('full','when','location','session-type'),
-    'action':set('when','billno','sponsor','cosponsors'),
-    'vote':set('billno','abstain','aye','nay','excused','when','committee'),
-}
-
-class OpenLegislationError(Exception):
-    """
-    Exception raised when OpenLegislation classes or functions are given
-    invalid input or are being used inappropriately.
-    """
-    
 class OpenLegislation:
-    """The client for interacting with the OpenLegislation API
-    
-    A default client can be created with an empty constructor
-    
-    .. doctest::
-    
-        >>>openleg = OpenLegislation()
-        >>>[openleg.mode, openleg.pagesize, openleg.version]
-        ['object', 20, 1.0]
-    
-    While the default settings for the client are generally recommended, you
-    may decide you require different settings.
-    
-    .. doctest::
-    
-        >>>openleg = OpenLegislation(mode='json',pagesize=100,version=1.0)
-        >>>[openleg.mode, openleg.pagesize, openleg.version]
-        ['json', 100, 1.0]
-    
-    When invalid arguments are given, an OpenLegislationError will be thrown
-    
-    .. doctest::
-    
-        >>>OpenLegislation(mode='csv')
-        Traceback (most recent call last):
-            ...
-        OpenLegislationError: Mode csv is not supported. Supported modes are set(['xml', 'json', 'html', 'object']).
-        
-    """
-    
-    def __init__(self,mode='object',pagesize=20,version=1.0):
-        self.setVersion(version)
-        self.setMode(mode)
-        self.setPagesize(pagesize)
-    
-    def setMode(self,mode):
-        """Sets the default format of data returned by queries
-        
-        Modes available are: html, xml, json, and object
-        
-        Object mode (the default) returns data in the form of a dictionary
-        parsed from json data using the json.load from the core library.
-        
-        Usage:
-        
-        .. doctest::
-        
-            >>>openleg.setMode('json')
-            >>>openleg.mode
-            'json'
-            
-        When attempting to set an unsupported mode an exception will be thrown:
-        
-        .. doctest::
-        
-            >>>openleg.setMode('csv')
-            Traceback (most recent call last):
-                ...
-            OpenLegislationError: Mode csv is not supported. Supported modes are set(['xml', 'json', 'html', 'object']).
-            
-        """
-        if not mode.lower() in _supportedModes:
-            msg = 'Mode %s is not supported. Supported modes are %s.'
-            raise OpenLegislationError(msg % (mode,_supportedModes))
-        self.mode = mode.lower()
+
+    def __init__(self,mode='object',pagesize=20):
+        self.configure(mode=mode,pagesize=pagesize)
+
+    def configure(self,mode=None,pagesize=None):
+        if mode: self.setMode(mode)
+        if pagesize: self.setPagesize(pagesize)
         return self
-        
+
+    def bill(self,ID):
+        return self.get(ID,'bill')
+
+    def transcript(self,ID):
+        return self.get(ID,'transcript')
+
+    def meeting(self,committee,number,session):
+        ID = 'meeting-%s-%i-%i' % (committee,number,session)
+        return self.get(ID,'meeting')
+
+    def calendar(self,caltype,number,session):
+        number = ''.join('0' for i in range(0,5-len(str(number))))+str(number)
+
+        ID = 'cal-%s-%s-%i' % (caltype, number, session)
+        return self.get(ID,'calendar')
+
+    def search(self,search=None):
+        return OpenLegislationSearch(search,self.mode,self.pagesize)
+
+    @validate('mode','in',config.modes,method=True)
+    def setMode(self,mode):
+        self.mode = mode
+        return self
+
+    @validate('pagesize','>',0,method=True)
     def setPagesize(self,pagesize):
-        """Sets the default number of results returned on each page for searches
-        
-        This number must be a positive integer but (as far as I know) has no
-        upper bounds (I've tried as high as 10,000). Higher numbers will lead
-        to longer response time for many searches.
-        
-        .. doctest::
-        
-            >>>openleg.setPagesize(100)
-            >>>openleg.pagesize
-            100
-        
-        When attempting to set an invalid pagesize an exception will be thrown
-        
-        .. doctest::
-        
-            >>>openleg.setPagesize(-10)
-            Traceback (most recent call last):
-                ...
-            OpenLegislationError: Invalid page size -10. Must be greater than zero.
-            
-        """
-        if not pagesize>0:
-            msg = 'Invalid page size %i. Must be greater than zero.'
-            raise OpenLegislationError(msg % pagesize)
         self.pagesize = pagesize
         return self
-    
-    def setVersion(self,version):
-        """Sets the default version of OpenLegislation for handling requests
-        
-        The only valid version number right now is 1.0. Just leave this as 
-        default. If for some reason you try to set it yourself to something
-        different (unsupported) an OpenLegislationError will be raised.
-        
-        .. doctest::
-            
-            >>>openleg.setVersion(2.0)
-            Traceback (most recent call last):
-                ...
-            OpenLegislationError: Version 2.0 is not supported. Supported versions are [1.0].
-            
-        """
-        if not float(version) in _supportedVersions:
-            msg = 'Version %s is not supported. Supported versions are %s.'
-            raise OpenLegislationError(msg % (version,_supportedVersions))
-        self.version = str(version)
-        return self
-    
-    def bill(self,ID):
-        """Fills a request for data on a bill idenfied by its bill number.
-        Returns the raw (or processed for object mode) data from the
-        OpenLegislation server for the bill identified (by senate bill id).
-        
-        .. doctest::
-            
-            >>>openleg.bill('S66002')['title']
-            u'Enacts into law major components of legislation necessary for the
-            efficient operation of local governments; repealer'
-            
-        If there is an input error, (input is not a valid bill number), an
-        OpenLegislationError is raised indicating a 500 error code was returned
-        from the OpenLegislation server. Server errors will get their own type
-        of exception in the future to separate server errors and library errors.
-        
-        .. doctest::
-        
-            >>>openleg.bill('S022')
-            Traceback (most recent call last):
-                ...
-            OpenLegislationError: Error Code: 500 on request
-            
-        
-        """
-        return OpenLegislationGet(self.mode,ID,'bill',self.version).fetch()
-        
-    def transcript(self,ID):
-        """Fills a request for transcript data identified by transcript number.
-        Returns the raw (or processed for object mode) data from the 
-        OpenLegislation server for the transcript requested.
-        
-        .. doctest::
-        
-            >>>openleg.transcript(297)['timestamp']
-            u'Sun Feb 07 10:00:00 EST 2010'
-            
-        If there is an input error, (input is invalid transcript id), an
-        OpenLegislationError is raised indicating a 500 error code was returned
-        from the OpenLegislation server. Server errors will get their own type
-        of exception in the future to separate server errors and library errors.
-        
-        .. doctest::
-        
-            >>>openleg.transcript(100)
-            Traceback (most recent call last):
-                ...
-            OpenLegislationError: Error Code: 500 on request
-        
-        """
-        return OpenLegislationGet(self.mode,ID,'transcript',self.version).fetch()        
-        
-    def search(self,search="",fulltext="",memo=""):
-        """Creates an OpenLegislationSearch object for search requests by
-        wrapping the supplied keywords in appropriate syntax. These keywords
-        are processed by Lucene and can handle the following basic synatx:
-        
-        -   '*': Your basic wildcard. 'health*' will match healthcare, health, 
-            and healthy
-        -   '~': Fuzzy searching. Matches things similar to the word input
-            #TODO: Find examples of fuzzy searching
-        -   'AND','OR','NOT': Logical operators. e.g. 'health* NOT medicare'
-            will find all results containing health* words but not pertaining to
-            medicare.
-        -   '()': Grouping. e.g. (health* NOT medicare) OR medicaid
-        
-        To search all fields of the bill use:
-        
-        .. testcode::
-            
-            >>>openleg.search("search text") #defaults to search
-            
-        To search the text of the bill only:
-        
-        .. testcode::
-        
-            >>>openleg.search(fulltext="search text")
-            
-        To search the memo of the bill only:
-        
-        .. testcode::
-        
-            >>>openleg.search(memo="search text")
-            
-        To search a combination of things combined by an OR
-        
-        .. testcode::
-        
-            >>>openleg.search(fulltext="health*",memo="dollars")
-            
-        The above code will search for health* in the full bill text OR dollars
-        in the memo of the bill
-        """
-        fulltext = 'full:(%s)' % fulltext if fulltext else fulltext
-        memo = 'memo:(%s)' % memo if memo else memo
-        search = ' OR '.join(filter(lambda x: x!="",[search,memo,fulltext]))
-        return OpenLegislationSearch(self.mode,search,self.pagesize,self.version)
-    
-class OpenLegislationGet():
-    
-    def __init__(self,mode,getId,getType,version=1.0):
-        if not getType in _supportedGetTypes:
-            msg = 'Invalid get type %s. Valid types are %s'
-            raise OpenLegislationError(msg % (getType,_supportedGetTypes))
-        self.__dict__.update(locals())
-    
-    def fetch(self):
-        #print self.url
-        request = _fetch(self.url)
-        if self.mode == 'object':
-            return json.load(request)[0]
-        else:
-            return request.read()
-            
-    @property
-    def url(self):
+
+    @validate('otype','in',config.getTypes,method=True)
+    def get(self,ID,otype):
+        getId = urllib.quote(str(ID))
         mode = 'json' if self.mode == 'object' else self.mode
-        getId = urllib.quote(str(self.getId))
-        return '/'.join( [_baseURL,'api',self.version,mode,self.getType,getId] )
+        request = _fetch( config.url+'/'.join(['api/1.0',mode,otype,getId]) )
+        response = request.read()
+        if self.mode == 'object':
+            return json.loads(response)[0]
+        else:
+            return response
+
+
+################################################################################
+# Search
 
 class OpenLegislationSearch():
-    """The search request class for the OpenLegislation Library.
-    
-    Should not be instanciated outside of the OpenLegislation class. Instead,
-    use the search method of the OpenLegislation class:
-    
-    .. doctest::
-        
-        >>>openleg.search('health*')
-        <openleg.api.OpenLegislationSearch instance at 0xa1c2dcc>
-        
-    See :ref:`searching` for more details on using openleg.search(...)
-    
-    When searches are modified with filters and logical operations, new objects
-    are created such that the original objects remain unchanged.
-    """
-    
-    def __init__(self,mode,search="",pagesize=20,version=1.0):
-        self.__dict__.update(locals())
-        self.__dict__.update({
-            'qsponsors':None,
-            'qtypes':None,
-            'qcommittees':None,
-            'qlocations':list()
-        })
-        
+
+    def __init__(self,search=None,mode='object',pagesize=20):
+        self.options = dict()
+        self.mode=mode
+        self.pagesize=pagesize
+        self._type = []
+        if search: self.options['search']=search
+
     def fetch(self,page=1):
-        """Retrieves a results page from OpenLegislation.
-        
-        Returns raw (processed when in object mode) data from the server
-        """
         request = _fetch(self.url(page))
         if self.mode == 'object':
             return json.load(request)
         else:
             return request.read()
-             
+
+    @validate('*args','in',config.filters.keys(),method=True)
+    def type(self,*args):
+        new = copy.deepcopy(self)
+        new.options['type']=' OR '.join(args)
+        new._type = args
+        return new
+
+    @validate('page','>',0,method=True)
     def url(self,page=1):
         """The request URL, constructed from the search arguments provided"""
-        if not page>0:
-            msg = 'Invalid page number %i. Must be greater than zero.'
-            raise OpenLegislationError(msg % page)
-        if not set(self.qtypes if self.qtypes else []).issubset(_supportedSearchTypes):
-            msg = "Invalid type %s. Valid types are %s."
-            raise OpenLegislationError(msg % (self.qtypes,_supportedSearchTypes))
-        mode = 'json' if self.mode == 'object' else self.mode
-
-        return '/'.join([
-            _baseURL,'search',
-            '?'+'&'.join([
+        return config.url+'search?' + '&'.join([
                 key+'='+str(value) for key,value in {
                     'term':urllib.quote_plus(self._buildString()),
                     'pageIdx':page,
                     'pageSize':self.pagesize,
-                    'format':mode
-                }.iteritems()
-            ]),
-        ])
-    
+                    'format': 'json' if self.mode == 'object' else self.mode
+                }.iteritems()])
+
+    @property
+    def filters(self):
+        try:
+            return set.union(*[set(config.filters[x]) for x in self._type])
+        except TypeError:
+            return config.fields.keys()
+
     def __getattr__(self,name):
-        if name in ['types','committees','sponsors']:
-            def listFunc(*args):
+        if name in self.filters:
+            def process(text):
                 new = copy.deepcopy(self)
-                setattr(new,'q'+name,args)
+                new.options[name] = text
                 return new
-            return listFunc
-        raise AttributeError(name)
+            return process
+        else:
+            msg = "%s is not a valid filter for the current type(s): %s"
+            raise AttributeError( msg % (name,', '.join(self._type)) )
+
+    def __deepcopy__(self,memo):
+        new = OpenLegislationSearch(mode=self.mode, pagesize=self.pagesize)
+        new.options = dict(self.options)
+        new._type = self._type
+        return new
 
     def _buildString(self):
-        """Builds the full search string from all specified options"""
-        prefix = ""
-        if self.qcommittees:
-            committee = ' OR '.join(['committee:'+committee for committee in self.qcommittees])
-            prefix = prefix+' AND '+committee if prefix else committee
-        if self.qsponsors:
-            sponsor = ' OR '.join(['sponsor:'+sponsor for sponsor in self.qsponsors])
-            prefix = prefix+' AND '+sponsor if prefix else sponsor
-        if self.qtypes:
-            otypes = ' OR '.join(['otype:'+object for object in self.qtypes])
-            prefix = prefix+' AND ('+otypes+')' if prefix else '('+otypes+')'
-        if self.search:
-            return prefix+' AND ('+self.search+')' if prefix else self.search
-        else:
-            return prefix
-        
+        options = list()
+        for alias,value in self.options.iteritems():
+            options.append("%s:(%s)" % (config.fields[alias],value))
+        return ' AND '.join(options)
+
+################################################################################
+# Search Sets
+
 class OpenLegislationSet(OpenLegislationSearch):
     """Class returned by all logical operations (AND,OR,NOT). Behaves in an
     identical mannor to an OpenLegislationSearch object and gets its attribute
     values from the first Seach object passed to the operations.
     """
+
+    @validate('join','in',['AND','OR','NOT'],method=True)
+    @validate('query1','instance',OpenLegislationSearch,method=True)
+    @validate('query2','instance',OpenLegislationSearch,method=True)
     def __init__(self,query1,query2,join):
-        if not join in _supportedJoins:
-           msg = "Invalid join %s. Valid joins are %s"
-           raise OpenLegislationError(msg % (join,_supportedJoins))
-        if not (isinstance(query1,OpenLegislationSearch) and isinstance(query2,OpenLegislationSearch)):
-           msg = "%s(...) can only be performed on OpenLegislationSearch objects"
-           raise OpenLegislationError(msg % join)
         self.__dict__.update(locals())
-        
+
     def __getattr__(self,name):
-        return getattr(self.query1,name)
-    
+        if name in ['pagesize','mode']:
+            return getattr(self.query1,name)
+        else:
+            raise AttributeError("Invalid attribute %s" % name)
+
     def _buildString(self):
         return (' '+self.join+' ').join([
-            '('+x._buildString()+')' for x in [self.query1, self.query2]
+            '('+x._buildString()+')' for x in [self.query1,self.query2]
         ])
+
+
+################################################################################
+# Set Operators
 
 def AND(q1,q2):
     """Returns a request representing the intersection of two result sets"""
     return OpenLegislationSet(q1,q2,'AND')
-    
+
 def OR(q1,q2):
     """Returns a request representing the union of the two result sets"""
     return OpenLegislationSet(q1,q2,'OR')
-    
+
 def NOT(q1,q2):
     """Returns a request representing the first result minus the items in
     the second result"""
     return OpenLegislationSet(q1,q2,'NOT')
-    
+
+
+################################################################################
+# Test Code
+
 if __name__ == '__main__':
-    
-    openleg = OpenLegislation()
-    query = openleg.search().types('bill','transcript')
+
+    import pprint
+    pp = pprint.PrettyPrinter(indent=2)
+
+    OpenLegislation().transcript(1031)
+
+
+    openleg = OpenLegislation(mode='json',pagesize=50)
+    bill = openleg.bill('S66002')
+    query = openleg.search()
+
+    query2 = query.type('transcript').search("hello there")
+
+    query3 = AND( query2, query.sessiontype('regular') )
+    print urllib.unquote_plus(query3.url())
