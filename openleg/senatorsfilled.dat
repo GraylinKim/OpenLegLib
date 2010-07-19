@@ -1,0 +1,5356 @@
+((dp1
+VAGING
+p2
+(lp3
+Vdiaz
+p4
+aVaddabbo
+p5
+aVfarley
+p6
+aVflanagan
+p7
+aVgolden
+p8
+aVkruger
+p9
+aVlavalle
+p10
+aVoppenheimer
+p11
+aVranzenhofer
+p12
+aVsavino
+p13
+aVserrano
+p14
+aVstavisky
+p15
+asVCODES
+p16
+(lp17
+Vschneiderman
+p18
+aVbonacic
+p19
+aVbreslin
+p20
+aVdefrancisco
+p21
+aVduane
+p22
+aVflanagan
+p23
+aVgolden
+p24
+aVhuntley
+p25
+aVklein
+p26
+aVlanza
+p27
+aVparker
+p28
+aVperkins
+p29
+aVsaland
+p30
+aVsampson
+p31
+aVsquadron
+p32
+aVvolker
+p33
+asVTRANSPORTATION
+p34
+(lp35
+Vdilan
+p36
+aVaddabbo
+p37
+aVaubertine
+p38
+aVdiaz
+p39
+aVfoley
+p40
+aVfuschillo
+p41
+aVjohnson+o
+p42
+aVlanza
+p43
+aVlarkin
+p44
+aVlibous
+p45
+aVnozzolio
+p46
+aVperkins
+p47
+aVrobach
+p48
+aVsavino
+p49
+aVsquadron
+p50
+aVstavisky
+p51
+aVvalesky
+p52
+aVvolker
+p53
+aVyoung
+p54
+asVLABOR
+p55
+(lp56
+Vonorato
+p57
+aVaddabbo
+p58
+aValesi
+p59
+aVbreslin
+p60
+aVdilan
+p61
+aVfuschillo
+p62
+aVklein
+p63
+aVleibell
+p64
+aVmarcellino
+p65
+aVmcdonald
+p66
+aVmorahan
+p67
+aVperkins
+p68
+aVrobach
+p69
+aVsavino
+p70
+aVstachowski
+p71
+aVstewart-cousins
+p72
+asVLOCAL GOVERNMENT
+p73
+(lp74
+Vstewart-cousins
+p75
+aVbonacic
+p76
+aVjohnson+c
+p77
+aVlittle
+p78
+aVmorahan
+p79
+aVoppenheimer
+p80
+aVthompson
+p81
+aVvalesky
+p82
+asVCULTURAL AFFAIRS, TOURISM, PARKS AND RECREATION
+p83
+(lp84
+Vserrano
+p85
+aValesi
+p86
+aVduane
+p87
+aVflanagan
+p88
+aVgriffo
+p89
+aVlittle
+p90
+aVranzenhofer
+p91
+aVschneiderman
+p92
+aVsquadron
+p93
+aVstavisky
+p94
+aVthompson
+p95
+aVvalesky
+p96
+aVwinner
+p97
+asVCRIME VICTIMS, CRIME AND CORRECTION
+p98
+(lp99
+Vhassell-thompson
+p100
+aVaubertine
+p101
+aVbreslin
+p102
+aVduane
+p103
+aVgolden
+p104
+aVkruger
+p105
+aVlittle
+p106
+aVmaziarz
+p107
+aVmontgomery
+p108
+aVnozzolio
+p109
+aVperalta
+p110
+aVsampson
+p111
+aVvolker
+p112
+aVwinner
+p113
+asVCHILDREN AND FAMILIES
+p114
+(lp115
+Vmontgomery
+p116
+aVduane
+p117
+aVhuntley
+p118
+aVmarcellino
+p119
+aVmcdonald
+p120
+aVschneiderman
+p121
+asVRULES
+p122
+(lp123
+Vsmith
+p124
+aVdilan
+p125
+aVduane
+p126
+aVespada
+p127
+aVfarley
+p128
+aVhassell-thompson
+p129
+aVjohnson+o
+p130
+aVklein
+p131
+aVkrueger
+p132
+aVlarkin
+p133
+aVlavalle
+p134
+aVmontgomery
+p135
+aVpadavan
+p136
+aVparker
+p137
+aVserrano
+p138
+aVseward
+p139
+aVskelos
+p140
+aVstachowski
+p141
+aVstewart-cousins
+p142
+aVvalesky
+p143
+aVvolker
+p144
+asVRACING, GAMING AND WAGERING
+p145
+(lp146
+Vadams
+p147
+aVaddabbo
+p148
+aVbonacic
+p149
+aVgriffo
+p150
+aVjohnson+c
+p151
+aVmcdonald
+p152
+aVnozzolio
+p153
+aVonorato
+p154
+aVstachowski
+p155
+asVCORPORATIONS, AUTHORITIES AND COMMISSIONS
+p156
+(lp157
+Vperkins
+p158
+aVdilan
+p159
+aVlarkin
+p160
+aVranzenhofer
+p161
+aVsquadron
+p162
+asVFINANCE
+p163
+(lp164
+Vkruger
+p165
+aVbreslin
+p166
+aVdefrancisco
+p167
+aVdiaz
+p168
+aVdilan
+p169
+aVduane
+p170
+aVespada
+p171
+aVfarley
+p172
+aVhannon
+p173
+aVjohnson+o
+p174
+aVklein
+p175
+aVkrueger
+p176
+aVlarkin
+p177
+aVlavalle
+p178
+aVleibell
+p179
+aVmarcellino
+p180
+aVmaziarz
+p181
+aVmontgomery
+p182
+aVnozzolio
+p183
+aVoppenheimer
+p184
+aVpadavan
+p185
+aVparker
+p186
+aVperalta
+p187
+aVperkins
+p188
+aVrobach
+p189
+aVsaland
+p190
+aVseward
+p191
+aVstachowski
+p192
+aVstavisky
+p193
+aVstewart-cousins
+p194
+aVthompson
+p195
+aVvalesky
+p196
+aVvolker
+p197
+asVMENTAL HEALTH AND DEVELOPMENTAL DISABILITIES
+p198
+(lp199
+Vmorahan
+p200
+aVadams
+p201
+aVbreslin
+p202
+aVduane
+p203
+aVhannon
+p204
+aVhuntley
+p205
+aVlibous
+p206
+aVmcdonald
+p207
+aVmontgomery
+p208
+aVmorahan
+p209
+aVvolker
+p210
+asVSOCIAL SERVICES
+p211
+(lp212
+Vsquadron
+p213
+aVduane
+p214
+aVkrueger
+p215
+aVmarcellino
+p216
+aVmcdonald
+p217
+aVsquadron
+p218
+asVVETERANS, HOMELAND SECURITY AND MILITARY AFFAIRS
+p219
+(lp220
+Vadams
+p221
+aVaddabbo
+p222
+aVaubertine
+p223
+aVgolden
+p224
+aVgriffo
+p225
+aVlarkin
+p226
+aVleibell
+p227
+aVmcdonald
+p228
+aVpadavan
+p229
+aVsampson
+p230
+aVsquadron
+p231
+aVstewart-cousins
+p232
+aVthompson
+p233
+asVCONSUMER PROTECTION
+p234
+(lp235
+Vperalta
+p236
+aVadams
+p237
+aVflanagan
+p238
+aVfuschillo
+p239
+aVhassell-thompson
+p240
+aVhuntley
+p241
+aVperkins
+p242
+aVrobach
+p243
+aVsaland
+p244
+aVsavino
+p245
+asVELECTIONS
+p246
+(lp247
+Vaddabbo
+p248
+aVdilan
+p249
+aVfoley
+p250
+aVgriffo
+p251
+aVlibous
+p252
+aVmorahan
+p253
+aVserrano
+p254
+asVENVIRONMENTAL CONSERVATION
+p255
+(lp256
+Vthompson
+p257
+aVfoley
+p258
+aVjohnson+o
+p259
+aVleibell
+p260
+aVlittle
+p261
+aVmarcellino
+p262
+aVoppenheimer
+p263
+aVpadavan
+p264
+aVparker
+p265
+aVperkins
+p266
+aVschneiderman
+p267
+aVserrano
+p268
+aVstewart-cousins
+p269
+aVyoung
+p270
+asVHOUSING, CONSTRUCTION AND COMMUNITY DEVELOPMENT
+p271
+(lp272
+Vespada
+p273
+aVbonacic
+p274
+aVdiaz
+p275
+aVhassell-thompson
+p276
+aVkrueger
+p277
+aVleibell
+p278
+aVsquadron
+p279
+aVyoung
+p280
+asVBANKS
+p281
+(lp282
+Vfoley
+p283
+aVadams
+p284
+aVbonacic
+p285
+aVbreslin
+p286
+aVdefrancisco
+p287
+aVdiaz
+p288
+aVfarley
+p289
+aVgolden
+p290
+aVjohnson+o
+p291
+aVklein
+p292
+aVkrueger
+p293
+aVkruger
+p294
+aVmarcellino
+p295
+aVmorahan
+p296
+aVonorato
+p297
+aVperalta
+p298
+aVranzenhofer
+p299
+aVsavino
+p300
+aVstewart-cousins
+p301
+asVCITIES
+p302
+(lp303
+Vhuntley
+p304
+aVlanza
+p305
+aVoppenheimer
+p306
+aVpadavan
+p307
+aVperkins
+p308
+asVINVESTIGATIONS AND GOVERNMENT OPERATIONS
+p309
+(lp310
+Vjohnson+c
+p311
+aVdiaz
+p312
+aVespada
+p313
+aVgolden
+p314
+aVklein
+p315
+aVnozzolio
+p316
+aVstachowski
+p317
+aVwinner
+p318
+asVHIGHER EDUCATION
+p319
+(lp320
+Vstavisky
+p321
+aValesi
+p322
+aVaubertine
+p323
+aVflanagan
+p324
+aVfoley
+p325
+aVgriffo
+p326
+aVhannon
+p327
+aVhuntley
+p328
+aVkrueger
+p329
+aVlavalle
+p330
+aVmaziarz
+p331
+aVonorato
+p332
+aVoppenheimer
+p333
+aVparker
+p334
+aVrobach
+p335
+aVschneiderman
+p336
+aVserrano
+p337
+aVseward
+p338
+asVENERGY AND TELECOMMUNICATIONS
+p339
+(lp340
+Vmaziarz
+p341
+aVadams
+p342
+aValesi
+p343
+aVaubertine
+p344
+aVgriffo
+p345
+aVkruger
+p346
+aVlibous
+p347
+aVlittle
+p348
+aVmaziarz
+p349
+aVonorato
+p350
+aVschneiderman
+p351
+aVvalesky
+p352
+asVJUDICIARY
+p353
+(lp354
+Vsampson
+p355
+aVadams
+p356
+aVbonacic
+p357
+aVbreslin
+p358
+aVdefrancisco
+p359
+aVdiaz
+p360
+aVdilan
+p361
+aVespada
+p362
+aVhassell-thompson
+p363
+aVklein
+p364
+aVlanza
+p365
+aVlavalle
+p366
+aVleibell
+p367
+aVmaziarz
+p368
+aVnozzolio
+p369
+aVonorato
+p370
+aVperkins
+p371
+aVranzenhofer
+p372
+aVsaland
+p373
+aVsavino
+p374
+aVschneiderman
+p375
+aVvolker
+p376
+aVwinner
+p377
+asVHEALTH
+p378
+(lp379
+Vduane
+p380
+aVfarley
+p381
+aVfuschillo
+p382
+aVhannon
+p383
+aVjohnson+c
+p384
+aVklein
+p385
+aVkruger
+p386
+aVlarkin
+p387
+aVlittle
+p388
+aVmontgomery
+p389
+aVsaland
+p390
+aVsampson
+p391
+aVstewart-cousins
+p392
+aVthompson
+p393
+aVvalesky
+p394
+aVwinner
+p395
+aVyoung
+p396
+asVCIVIL SERVICE AND PENSIONS
+p397
+(lp398
+Vsavino
+p399
+aVaddabbo
+p400
+aVdilan
+p401
+aVfoley
+p402
+aVfuschillo
+p403
+aVhannon
+p404
+aVhuntley
+p405
+aVlanza
+p406
+aVleibell
+p407
+aVperkins
+p408
+aVrobach
+p409
+aVthompson
+p410
+asVEDUCATION
+p411
+(lp412
+Voppenheimer
+p413
+aVaddabbo
+p414
+aVbreslin
+p415
+aVespada
+p416
+aVflanagan
+p417
+aVfoley
+p418
+aVhuntley
+p419
+aVjohnson+c
+p420
+aVlavalle
+p421
+aVlittle
+p422
+aVmarcellino
+p423
+aVmontgomery
+p424
+aVmorahan
+p425
+aVpadavan
+p426
+aVsaland
+p427
+aVserrano
+p428
+aVseward
+p429
+aVsquadron
+p430
+aVstavisky
+p431
+asVAGRICULTURE
+p432
+(lp433
+Vaubertine
+p434
+aVbreslin
+p435
+aVmontgomery
+p436
+aVranzenhofer
+p437
+aVseward
+p438
+aVstachowski
+p439
+aVvalesky
+p440
+aVwinner
+p441
+aVyoung
+p442
+asVINSURANCE
+p443
+(lp444
+Vbreslin
+p445
+aValesi
+p446
+aVdiaz
+p447
+aVespada
+p448
+aVgolden
+p449
+aVjohnson+c
+p450
+aVkruger
+p451
+aVlarkin
+p452
+aVlavalle
+p453
+aVleibell
+p454
+aVmcdonald
+p455
+aVparker
+p456
+aVperalta
+p457
+aVsampson
+p458
+aVseward
+p459
+aVstachowski
+p460
+aVthompson
+p461
+aVyoung
+p462
+asVCOMMERCE, ECONOMIC DEVELOPMENT AND SMALL BUSINESS
+p463
+(lp464
+Vstachowski
+p465
+aValesi
+p466
+aVaubertine
+p467
+aVespada
+p468
+aVfoley
+p469
+aVfuschillo
+p470
+aVgriffo
+p471
+aVhassell-thompson
+p472
+aVparker
+p473
+aVrobach
+p474
+aVstewart-cousins
+p475
+aVvolker
+p476
+as(dp477
+Vnozzolio
+p478
+(dp479
+S'website'
+p480
+Vhttp://www.nysenate.gov/senator/michael-f-nozzolio
+p481
+sS'committees'
+p482
+(lp483
+g98
+ag163
+ag309
+ag353
+ag145
+ag34
+asS'district'
+p484
+V54
+p485
+sS'lastname'
+p486
+VNozzolio
+p487
+sS'twitter'
+p488
+NsS'youtube'
+p489
+NsS'chairships'
+p490
+(lp491
+sS'offices'
+p492
+(dp493
+VAlbany Office
+p494
+(lp495
+V413 Legislative Office Building
+p496
+aVAlbany, NY 12247
+p497
+aVTel: (518) 455-2366 / Fax: (518)426-6953
+p498
+asVDistrict Office
+p499
+(lp500
+V119 Fall Street
+p501
+aVSeneca Falls, NY 13148
+p502
+aVTel: (315) 568-9816 / Fax: (315)568-2090
+p503
+aVToll-free 1-888-568-9816
+p504
+assS'facebook'
+p505
+Vhttp://www.facebook.com/pages/Senator-Mike-Nozzolio/53492028933
+p506
+sS'parties'
+p507
+(lp508
+S'Republican'
+p509
+aS'Conservative'
+p510
+aS'Independence Party'
+p511
+asS'portrait'
+p512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/2.jpg
+p513
+sS'fullname'
+p514
+VMichael F. Nozzolio
+p515
+sS'email'
+p516
+Vnozzolio@senate.state.ny.us
+p517
+sS'rss'
+p518
+V/senator/michael-f-nozzolio/content/feed
+p519
+ssVgolden
+p520
+(dp521
+g480
+Vhttp://www.nysenate.gov/senator/martin-j-golden
+p522
+sg482
+(lp523
+g2
+ag281
+ag16
+ag98
+ag443
+ag309
+ag219
+asg484
+V22
+p524
+sg486
+VGolden
+p525
+sg488
+Vhttp://twitter.com/senmartygolden
+p526
+sg489
+Nsg490
+(lp527
+sg492
+(dp528
+VAlbany Office
+p529
+(lp530
+V504 Legislative Office Building
+p531
+aVAlbany, NY 12247
+p532
+aV(518) 455-2730
+p533
+asVDistrict Office
+p534
+(lp535
+V7408 5th Avenue, 1st Floor
+p536
+aVBrooklyn, New York 11209
+p537
+aVTel: (718) 238-6044 /  Fax: (718) 238-6170
+p538
+asVSatellite Office
+p539
+(lp540
+V3604 Quentin Road
+p541
+aVBrooklyn, New York 11234
+p542
+aVHours: Monday 9 am - 12 pm, Wednesday 2 pm - 5 pm and Friday 9 am - 12 pm
+p543
+assg505
+Vhttp://www.facebook.com/pages/Martin-J-Golden/29214902523
+p544
+sg507
+(lp545
+g509
+ag510
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD22_Golden.jpg
+p546
+sg514
+VMartin J. Golden
+p547
+sg516
+Vgolden@senate.state.ny.us
+p548
+sg518
+V/senator/martin-j-golden/content/feed
+p549
+ssVparker
+p550
+(dp551
+g480
+Vhttp://www.nysenate.gov/senator/kevin-s-parker
+p552
+sg482
+(lp553
+g16
+ag463
+ag255
+ag163
+ag319
+ag443
+ag122
+asg484
+V21
+p554
+sg486
+VParker
+p555
+sg488
+Nsg489
+Nsg490
+(lp556
+sg492
+(dp557
+VDistrict Office:
+p558
+(lp559
+V1300 Flatbush Avenue
+p560
+aVBrooklyn, NY 11210
+p561
+aVTel:  (718) 629-6401
+p562
+aVFax:  (718) 629-6420
+p563
+asVAlbany Office:
+p564
+(lp565
+V412 Legislative Office Building
+p566
+aVAlbany, NY 12247
+p567
+aVTel:  (518) 455-2580
+p568
+aVFax:  (518) 426-6843
+p569
+assg505
+Vhttp://www.facebook.com/pages/Senator-Kevin-Parker/24988756132?ref=sgm
+p570
+sg507
+(lp571
+S'Democrat'
+p572
+aS'Working Families'
+p573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Parker2007Biography.jpg
+p574
+sg514
+VKevin S. Parker
+p575
+sg516
+Vparker@senate.state.ny.us
+p576
+sg518
+V/senator/kevin-s-parker/content/feed
+p577
+ssVpadavan
+p578
+(dp579
+g480
+Vhttp://www.nysenate.gov/senator/frank-padavan
+p580
+sg482
+(lp581
+g302
+ag411
+ag255
+ag163
+ag122
+ag219
+asg484
+V11
+p582
+sg486
+VPadavan
+p583
+sg488
+Nsg489
+Nsg490
+(lp584
+sg492
+(dp585
+VDistrict Office:
+p586
+(lp587
+V89-39 Gettysburg Street
+p588
+aVBellerose, NY, NY 11426
+p589
+aVPhone: (718) 343-0255
+p590
+aVFax: (718) 343-0354
+p591
+asVAlbany Office:
+p592
+(lp593
+VRoom 414, State Capitol
+p594
+aVAlbany, NY 12247
+p595
+aVPhone: (518) 455-3381
+p596
+aVFax: (518) 455-2008
+p597
+assg505
+Nsg507
+(lp598
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD11_Padavan.jpg
+p599
+sg514
+VFrank Padavan
+p600
+sg516
+Vpadavan@senate.state.ny.us
+p601
+sg518
+V/senator/frank-padavan/content/feed
+p602
+ssVbreslin
+p603
+(dp604
+g480
+Vhttp://www.nysenate.gov/senator/neil-d-breslin
+p605
+sg482
+(lp606
+g432
+ag281
+ag16
+ag98
+ag411
+ag163
+ag353
+ag55
+ag198
+asg484
+V46
+p607
+sg486
+VBreslin
+p608
+sg488
+Nsg489
+Nsg490
+(lp609
+g443
+asg492
+(dp610
+VAlbany Office
+p611
+(lp612
+V502 Capitol 
+p613
+aVAlbany, New York 12247
+p614
+aVTel: (518) 455-2225
+p615
+asVDistrict Office
+p616
+(lp617
+V502 Capitol 
+p618
+aVAlbany, New York 12247
+p619
+aVTel: (518) 455-2225
+p620
+assg505
+Vhttp://www.facebook.com/pages/Neil-D-Breslin/28217221995
+p621
+sg507
+(lp622
+g572
+ag511
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Breslin202009.jpg
+p623
+sg514
+VNeil D. Breslin
+p624
+sg516
+Vbreslin@senate.state.ny.us
+p625
+sg518
+V/senator/neil-d-breslin/content/feed
+p626
+ssVsampson
+p627
+(dp628
+g480
+Vhttp://www.nysenate.gov/senator/john-l-sampson
+p629
+sg482
+(lp630
+g16
+ag98
+ag378
+ag443
+ag219
+asg484
+V19
+p631
+sg486
+VSampson
+p632
+sg488
+Nsg489
+Nsg490
+(lp633
+g353
+asg492
+(dp634
+VDistrict Office:
+p635
+(lp636
+V1222  East 96th Street
+p637
+aVBrooklyn, NY 11236
+p638
+aVTel:   (718) 649-7653 
+p639
+aVFax:  (718) 649-7661
+p640
+asVAlbany Office:
+p641
+(lp642
+V409 Legislative Office Building
+p643
+aVAlbany, NY 12247
+p644
+aVTel:   (518) 455-2788 
+p645
+aVFax:  (518) 426-6806
+p646
+assg505
+Nsg507
+(lp647
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/webphoto1.jpg
+p648
+sg514
+VJohn L. Sampson
+p649
+sg516
+Vsampson@senate.state.ny.us
+p650
+sg518
+V/senator/john-l-sampson/content/feed
+p651
+ssVperalta
+p652
+(dp653
+g480
+Vhttp://www.nysenate.gov/senator/jose-peralta
+p654
+sg482
+(lp655
+g281
+ag98
+ag163
+ag443
+asg484
+V13
+p656
+sg486
+VPeralta
+p657
+sg488
+Vhttp://twitter.com/SenatorPeralta
+p658
+sg489
+Vhttp://www.youtube.com/user/SenatorJosePeralta
+p659
+sg490
+(lp660
+g234
+asg492
+(dp661
+VAlbany Office:
+p662
+(lp663
+V944 Legislative Office Building
+p664
+aVAlbany, NY 12247
+p665
+aVTel:  (518) 455-2529   
+p666
+aVFax:  (518) 426-6909
+p667
+assg505
+Vhttp://www.facebook.com/SenatorPeralta
+p668
+sg507
+(lp669
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Jose Peralta MAIN-Senate headshot.JPG
+p670
+sg514
+VJosé P. Peralta
+p671
+sg516
+Vjperalta@senate.state.ny.us
+p672
+sg518
+V/senator/jose-peralta/content/feed
+p673
+ssVsavino
+p674
+(dp675
+g480
+Vhttp://www.nysenate.gov/senator/diane-j-savino
+p676
+sg482
+(lp677
+g2
+ag281
+ag234
+ag353
+ag55
+ag34
+asg484
+V23
+p678
+sg486
+VSavino
+p679
+sg488
+Vhttp://twitter.com/dianesavino
+p680
+sg489
+Nsg490
+(lp681
+g397
+asg492
+(dp682
+VBrooklyn Office
+p683
+(lp684
+VSenator Diane J. Savino
+p685
+aV2872 West 15th Street
+p686
+aVBrooklyn, New York 11224-2602
+p687
+aVPhone: (718) 333-0311 
+p688
+aVFax: (347) 492-3263
+p689
+asVAlbany Office
+p690
+(lp691
+VSenator Diane J. Savino
+p692
+aV512 Legislative Office Building 
+p693
+aVAlbany, New York 12247
+p694
+aVPhone: 
+p695
+aV(518) 455-2437
+p696
+aVFax: 
+p697
+aV(518) 426-6943
+p698
+asVDistrict Office
+p699
+(lp700
+VSenator Diane J. Savino
+p701
+aV36 Richmond Terrace, Suite 112
+p702
+aVStaten Island, New York 10301
+p703
+aVPhone: 
+p704
+aV(718) 727-9406
+p705
+aVFax: 
+p706
+aV(718) 727-9426
+p707
+assg505
+Vhttp://www.facebook.com/pages/Senator-Diane-J-Savino/136884736636?ref=nf
+p708
+sg507
+(lp709
+g572
+ag511
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(03-03-09) Savino-HS-019.jpg
+p710
+sg514
+VDiane J. Savino
+p711
+sg516
+Vsavino@senate.state.ny.us
+p712
+sg518
+V/senator/diane-j-savino/content/feed
+p713
+ssVperkins
+p714
+(dp715
+g480
+Vhttp://www.nysenate.gov/senator/bill-perkins
+p716
+sg482
+(lp717
+g302
+ag397
+ag16
+ag234
+ag255
+ag163
+ag353
+ag55
+ag34
+asg484
+V30
+p718
+sg486
+VPerkins
+p719
+sg488
+Nsg489
+Nsg490
+(lp720
+g156
+asg492
+(dp721
+VDistrict Office:
+p722
+(lp723
+V163 West 125th Street
+p724
+aVHarlem State Office Bldg., Suite 912
+p725
+aVNew York, New York 10027
+p726
+aV212-222-7315
+p727
+asVAlbany Office:
+p728
+(lp729
+V817 Legislative Office Building
+p730
+aVAlbany, New York 12247
+p731
+aV518-455-2441
+p732
+assg505
+Nsg507
+(lp733
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(02-05-09) Perkins-HS-004_0.jpg
+p734
+sg514
+VBill Perkins
+p735
+sg516
+Vperkins@senate.state.ny.us
+p736
+sg518
+V/senator/bill-perkins/content/feed
+p737
+ssVkruger
+p738
+(dp739
+g480
+Vhttp://www.nysenate.gov/senator/carl-kruger
+p740
+sg482
+(lp741
+g2
+ag281
+ag98
+ag339
+ag378
+ag443
+asg484
+V27
+p742
+sg486
+VKruger
+p743
+sg488
+Nsg489
+Nsg490
+(lp744
+g163
+asg492
+(dp745
+VAlbany Office
+p746
+(lp747
+V913 Legislative Office Building
+p748
+aVAlbany, New York 12247
+p749
+aVTel:   (518) 455-2460 
+p750
+aVFax:  (518) 426-6855
+p751
+asVDistrict Office
+p752
+(lp753
+V2201 Avenue U
+p754
+aVBrooklyn, NY 11229
+p755
+aVTel:   (718) 743-8610 
+p756
+aVFax:  (718) 743-5958
+p757
+assg505
+Nsg507
+(lp758
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/HEADSHOT-CK 2009_0.JPG
+p759
+sg514
+VCarl Kruger
+p760
+sg516
+Vkruger@senate.state.ny.us
+p761
+sg518
+V/senator/carl-kruger/content/feed
+p762
+ssVsaland
+p763
+(dp764
+g480
+Vhttp://www.nysenate.gov/senator/stephen-m-saland
+p765
+sg482
+(lp766
+g16
+ag234
+ag411
+ag163
+ag378
+ag353
+asg484
+V41
+p767
+sg486
+VSaland
+p768
+sg488
+Nsg489
+Nsg490
+(lp769
+sg492
+(dp770
+VAlbany Office
+p771
+(lp772
+V617 Legislative Office Building
+p773
+aVAlbany, New York 12247
+p774
+aV518-455-2411
+p775
+asVDistrict Office
+p776
+(lp777
+V3 Neptune Road, Suite A19B
+p778
+aVPoughkeepsie, New York 12601
+p779
+aV845-463-0840
+p780
+assg505
+Vhttp://www.new.facebook.com/pages/Senator-Steve-Saland/79851684092?ref=mf
+p781
+sg507
+(lp782
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD41_Saland.jpg
+p783
+sg514
+VStephen M. Saland
+p784
+sg516
+Vsaland@senate.state.ny.us
+p785
+sg518
+V/senator/stephen-m-saland/content/feed
+p786
+ssVoppenheimer
+p787
+(dp788
+g480
+Vhttp://www.nysenate.gov/senator/suzi-oppenheimer
+p789
+sg482
+(lp790
+g2
+ag302
+ag255
+ag163
+ag319
+ag73
+asg484
+V37
+p791
+sg486
+VOppenheimer
+p792
+sg488
+Vhttp://twitter.com/SenatorSuzi
+p793
+sg489
+Nsg490
+(lp794
+g411
+asg492
+(dp795
+VAlbany Office
+p796
+(lp797
+V806 Legislative Office Building
+p798
+aVAlbany, New York 12247
+p799
+aV518-455-2031
+p800
+asVDistrict Office
+p801
+(lp802
+V222 Grace Church Street, 3rd Floor
+p803
+aVPort Chester, New York 10573
+p804
+aV914-934-5250
+p805
+assg505
+Vhttp://www.facebook.com/pages/Suzi-Oppenheimer/26007246918?ref=ts
+p806
+sg507
+(lp807
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/BIOShotOppenheimer2007newheadshotcolor.jpg
+p808
+sg514
+VSuzi Oppenheimer
+p809
+sg516
+Voppenhei@senate.state.ny.us
+p810
+sg518
+V/senator/suzi-oppenheimer/content/feed
+p811
+ssVsmith
+p812
+(dp813
+g480
+Vhttp://www.nysenate.gov/senator/malcolm-smith
+p814
+sg482
+(lp815
+sg484
+V14
+p816
+sg486
+VSmith
+p817
+sg488
+Vhttp://twitter.com/malcolmasmith
+p818
+sg489
+Nsg490
+(lp819
+g122
+asg492
+(dp820
+VMajority Leader's Office
+p821
+(lp822
+VOffice of New York State Senator Malcolm A. Smith
+p823
+aV250 Broadway, Suite 1930
+p824
+aVNew York, NY 10007
+p825
+aVTel:  (212) 298-5585 / Fax:  (212) 298-5605
+p826
+asVAlbany Office
+p827
+(lp828
+VOffice of New York State Senator Malcolm A. Smith
+p829
+aV909 Legislative Office Building
+p830
+aVAlbany, NY 12247
+p831
+aVTel:  (518) 455-2701 / Fax:  (518) 455-2816
+p832
+asVDistrict Office
+p833
+(lp834
+VOffice of New York State Senator Malcolm A. Smith
+p835
+aV205-19 Linden Boulevard
+p836
+aVSt. Albans, NY 11412
+p837
+aVTel:  (718) 528-4290 / Fax:  (718) 528-4898
+p838
+assg505
+Vhttp://www.facebook.com/pages/Malcolm-A-Smith/74081452742
+p839
+sg507
+(lp840
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Smith-HS-024.jpg
+p841
+sg514
+VMalcolm A. Smith
+p842
+sg516
+Vmasmith@senate.state.ny.us
+p843
+sg518
+V/senator/malcolm-smith/content/feed
+p844
+ssVadams
+p845
+(dp846
+g480
+Vhttp://www.nysenate.gov/senator/eric-adams
+p847
+sg482
+(lp848
+g281
+ag234
+ag339
+ag353
+ag198
+asg484
+V20
+p849
+sg486
+VAdams
+p850
+sg488
+Vhttp://twitter.com/NYSSenAdams
+p851
+sg489
+Nsg490
+(lp852
+g145
+ag219
+asg492
+(dp853
+VDistrict Office:
+p854
+(lp855
+V572 Flatbush Avenue
+p856
+aVBrooklyn, New York 11225
+p857
+aVPhone: (718) 284-4700
+p858
+aVFax: (718) 282-3585
+p859
+asVAlbany Office:
+p860
+(lp861
+VLegislative Office Building, Room 915
+p862
+aVAlbany, New York 12247
+p863
+aVPhone: (518) 455-2431
+p864
+aVFax: (518) 426-6856
+p865
+assg505
+Vhttp://www.facebook.com/pages/New-York-State-Senator-Eric-Adams/80559174013
+p866
+sg507
+(lp867
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(02-04-09) Adams-HS-059NEW HEADSHOT_1.JPG
+p868
+sg514
+VEric Adams
+p869
+sg516
+Veadams@senate.state.ny.us
+p870
+sg518
+V/senator/eric-adams/content/feed
+p871
+ssVlittle
+p872
+(dp873
+g480
+Vhttp://www.nysenate.gov/senator/elizabeth-little
+p874
+sg482
+(lp875
+g98
+ag83
+ag411
+ag339
+ag255
+ag378
+ag73
+asg484
+V45
+p876
+sg486
+VLittle
+p877
+sg488
+Nsg489
+Nsg490
+(lp878
+sg492
+(dp879
+VPlattsburgh Office
+p880
+(lp881
+V137 Margaret Street, Suite 100 
+p882
+aVPlattsburgh, New York 12901
+p883
+aVPhone: (518) 561-2430
+p884
+asVAlbany Office
+p885
+(lp886
+V506 Legislative Office Building 
+p887
+aVAlbany, NY 12247 
+p888
+aVPhone: (518) 455-2811
+p889
+asVDistrict Office
+p890
+(lp891
+V5 Warren Street
+p892
+aVSuite 3 
+p893
+aVGlens Falls, NY 12801 
+p894
+aVPhone: (518) 743-0968
+p895
+assg505
+Vhttp://www.facebook.com/profile.php?id=1433096364&ref=profile
+p896
+sg507
+(lp897
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/24x7@300dpi.jpg
+p898
+sg514
+VElizabeth Little
+p899
+sg516
+Vlittle@senate.state.ny.us
+p900
+sg518
+V/senator/elizabeth-little/content/feed
+p901
+ssVfuschillo
+p902
+(dp903
+g480
+Vhttp://www.nysenate.gov/senator/charles-j-fuschillo-jr
+p904
+sg482
+(lp905
+g397
+ag463
+ag234
+ag378
+ag55
+ag34
+asg484
+V8
+sg486
+VFuschillo
+p906
+sg488
+Vhttp://twitter.com/SenFuschillo
+p907
+sg489
+Nsg490
+(lp908
+sg492
+(dp909
+VDistrict Office:
+p910
+(lp911
+V5550 Merrick Road
+p912
+aVSuite 205
+p913
+aVMassapequa, New York 11758-6238
+p914
+aV516-882-0630
+p915
+aVFax: 516-882-0636
+p916
+asVAlbany Office:
+p917
+(lp918
+VRoom 615 LOB
+p919
+aVAlbany, New York 12247
+p920
+aV518-455-3341
+p921
+assg505
+Vhttp://www.facebook.com/pages/Senator-Charles-J-Fuschillo-Jr/12764386316
+p922
+sg507
+(lp923
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/forwebBROCHURESSENATORFUSCHILLO'SOFFICIALHEADSHOT.jpg
+p924
+sg514
+VCharles J. Fuschillo Jr.
+p925
+sg516
+Vfuschill@senate.state.ny.us
+p926
+sg518
+V/senator/charles-j-fuschillo-jr/content/feed
+p927
+ssVmcdonald
+p928
+(dp929
+g480
+Vhttp://www.nysenate.gov/senator/roy-j-mcdonald
+p930
+sg482
+(lp931
+g114
+ag443
+ag55
+ag198
+ag145
+ag211
+ag219
+asg484
+V43
+p932
+sg486
+VMcDonald
+p933
+sg488
+Nsg489
+Nsg490
+(lp934
+sg492
+(dp935
+VDistrict Office
+p936
+(lp937
+VHedley Bldg., Suite 1004
+p938
+aV433 River Street 
+p939
+aVTroy, NY  12180
+p940
+aVTel: (518) 274-4616
+p941
+aVFax: (518) 274-4635
+p942
+asVAlbany Office 
+p943
+(lp944
+V306 Legislative Office Building
+p945
+aVAlbany, NY 12247
+p946
+aVTel: (518) 455-2381
+p947
+aVFax: (518) 426-6985
+p948
+assg505
+Vhttp://www.facebook.com/pages/Senator-Roy-McDonald/154638870286
+p949
+sg507
+(lp950
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD43_McDonald.jpg
+p951
+sg514
+VRoy J. McDonald
+p952
+sg516
+Vmcdonald@senate.state.ny.us
+p953
+sg518
+V/senator/roy-j-mcdonald/content/feed
+p954
+ssVlibous
+p955
+(dp956
+g480
+Vhttp://www.nysenate.gov/senator/tom-libous
+p957
+sg482
+(lp958
+g246
+ag339
+ag198
+ag34
+asg484
+V52
+p959
+sg486
+VLibous
+p960
+sg488
+Nsg489
+Nsg490
+(lp961
+sg492
+(dp962
+VAlbany Office
+p963
+(lp964
+V413 State Capitol Building
+p965
+aVAlbany, New York 12247
+p966
+aV518-455-2677
+p967
+asVDistrict Office
+p968
+(lp969
+V1607 State Office Building
+p970
+aV44 Hawley Street
+p971
+aVBinghamton, NY 13901
+p972
+aVBroome: (607) 773-8771
+p973
+aVTioga: (607) 687-3399
+p974
+aVChenango: (607) 336-3401
+p975
+assg505
+Nsg507
+(lp976
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Libous.jpg
+p977
+sg514
+VTom Libous
+p978
+sg516
+Vsenator@senatorlibous.com
+p979
+sg518
+V/senator/tom-libous/content/feed
+p980
+ssVwinner
+p981
+(dp982
+g480
+Vhttp://www.nysenate.gov/senator/george-h-winner-jr
+p983
+sg482
+(lp984
+g432
+ag98
+ag83
+ag378
+ag309
+ag353
+asg484
+V53
+p985
+sg486
+VWinner
+p986
+sg488
+Nsg489
+Nsg490
+(lp987
+sg492
+(dp988
+VBath District Office:
+p989
+(lp990
+V105 East Steuben Street
+p991
+aVBath, New York 14810
+p992
+aVPhone: (607) 776-3201
+p993
+aVFax: (607) 776-5185
+p994
+asVElmira District Office:
+p995
+(lp996
+V228 Lake Street 
+p997
+aVBox 588
+p998
+aVElmira, NY 14902
+p999
+aVPhone: (607) 732-2765
+p1000
+aVFax: (607) 732-2832
+p1001
+asVAlbany Office:
+p1002
+(lp1003
+VRoom 415
+p1004
+aVLegislative Office Building
+p1005
+aVAlbany, NY 12247
+p1006
+aVPhone: (518) 455-2091
+p1007
+aVFax: (518) 426-6976
+p1008
+assg505
+Vhttp://www.facebook.com/pages/New-York-State-Senator-George-Winner/77930419708
+p1009
+sg507
+(lp1010
+g509
+ag510
+aS'Independent'
+p1011
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/BudgetNewsletter07-PhotoA.jpg
+p1012
+sg514
+VGeorge H. Winner Jr.
+p1013
+sg516
+Vwinner@senate.state.ny.us
+p1014
+sg518
+V/senator/george-h-winner-jr/content/feed
+p1015
+ssVhannon
+p1016
+(dp1017
+g480
+Vhttp://www.nysenate.gov/senator/kemp-hannon
+p1018
+sg482
+(lp1019
+g397
+ag163
+ag378
+ag319
+ag198
+asg484
+V6
+sg486
+VHannon
+p1020
+sg488
+Vhttp://twitter.com/kemphannon
+p1021
+sg489
+Vhttp://www.youtube.com/senatorhannon
+p1022
+sg490
+(lp1023
+sg492
+(dp1024
+VDistrict Office:
+p1025
+(lp1026
+V224 7th Street
+p1027
+aVGarden City, NY 11530
+p1028
+aVPh 516-739-1700
+p1029
+asVAlbany Office:
+p1030
+(lp1031
+V408 Legislative Office Building
+p1032
+aVAlbany, NY 12247
+p1033
+aVPh 518-455-2200
+p1034
+assg505
+Vhttp://www.facebook.com/kemp.hannon
+p1035
+sg507
+(lp1036
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/hannon.jpg
+p1037
+sg514
+VKemp Hannon
+p1038
+sg516
+Vhannon@senate.state.ny.us
+p1039
+sg518
+V/senator/kemp-hannon/content/feed
+p1040
+ssVyoung
+p1041
+(dp1042
+g480
+Vhttp://www.nysenate.gov/senator/catharine-young
+p1043
+sg482
+(lp1044
+g432
+ag255
+ag378
+ag271
+ag443
+ag34
+asg484
+V57
+p1045
+sg486
+VYoung
+p1046
+sg488
+Nsg489
+Nsg490
+(lp1047
+sg492
+(dp1048
+VAlbany Office
+p1049
+(lp1050
+VRoom 513 Legislative Office Building
+p1051
+aVAlbany, New York 12247
+p1052
+aV(518) 455-3563
+p1053
+aV(518) 426-6905 (fax)
+p1054
+asVDistrict Office
+p1055
+(lp1056
+VWestgate Plaza 700 W. State Street
+p1057
+aVOlean, New York 14760
+p1058
+aV(716) 372-4901
+p1059
+aVToll free @ 1-800-707-0058
+p1060
+aV(716) 372-5740 (fax)
+p1061
+asVSatellite Office
+p1062
+(lp1063
+VFenton Building
+p1064
+aV2-6 East 2nd Street
+p1065
+aVSuite 302
+p1066
+aVJamestown, New York 14701
+p1067
+aV(716) 664-4603
+p1068
+aV(716) 664-2430 (fax)
+p1069
+assg505
+Nsg507
+(lp1070
+g509
+ag510
+ag1011
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/young headshot-ret.jpg
+p1071
+sg514
+VCatharine Young
+p1072
+sg516
+Vcyoung@senate.state.ny.us
+p1073
+sg518
+V/senator/catharine-young/content/feed
+p1074
+ssVespada
+p1075
+(dp1076
+g480
+Vhttp://www.nysenate.gov/senator/pedro-espada-jr
+p1077
+sg482
+(lp1078
+g463
+ag411
+ag163
+ag443
+ag309
+ag353
+ag122
+asg484
+V33
+p1079
+sg486
+VEspada
+p1080
+sg488
+Vhttp://twitter.com/SenEspada
+p1081
+sg489
+Nsg490
+(lp1082
+g271
+asg492
+(dp1083
+VAlbany Office
+p1084
+(lp1085
+VCapitol Building Room 420
+p1086
+aVAlbany, NY 12247
+p1087
+aVTel: (518) 455-3395
+p1088
+aVFax: (518) 426-6858
+p1089
+asVDistrict Office
+p1090
+(lp1091
+V400 East Fordham Road, 7th Floor
+p1092
+aVFordham Place
+p1093
+aVBronx, NY 10458
+p1094
+aVTel: (718) 220-5480
+p1095
+aVFax: (718) 220-5398
+p1096
+assg505
+Vhttp://www.facebook.com/Senator.Espada
+p1097
+sg507
+(lp1098
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(01-12-09) Espada-HS-010.jpg
+p1099
+sg514
+VPedro Espada Jr.
+p1100
+sg516
+Vespada@senate.state.ny.us
+p1101
+sg518
+V/senator/pedro-espada-jr/content/feed
+p1102
+ssVmontgomery
+p1103
+(dp1104
+g480
+Vhttp://www.nysenate.gov/senator/velmanette-montgomery
+p1105
+sg482
+(lp1106
+g432
+ag98
+ag411
+ag163
+ag378
+ag198
+ag122
+asg484
+V18
+p1107
+sg486
+VMontgomery
+p1108
+sg488
+Nsg489
+Nsg490
+(lp1109
+g114
+asg492
+(dp1110
+VAlbany Office
+p1111
+(lp1112
+V711 Legislative Office Building
+p1113
+aVAlbany, NY 12247
+p1114
+aVTel:
+p1115
+aV  (518) 455-3451
+p1116
+aVFax:
+p1117
+aV  (518) 426-6854
+p1118
+asVDistrict Office
+p1119
+(lp1120
+V30 Third Avenue, 11th Floor
+p1121
+aVBrooklyn, NY 11217
+p1122
+aVTel:
+p1123
+aV  (718) 643-6140
+p1124
+aVFax:
+p1125
+aV  (718) 237-4137
+p1126
+assg505
+Vhttp://www.facebook.com/pages/New-York-State-Senator-Velmanette-Montgomery/103064926679
+p1127
+sg507
+(lp1128
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Montgomery May Headshot 2_0.jpg
+p1129
+sg514
+VVelmanette Montgomery
+p1130
+sg516
+Vmontgome@senate.state.ny.us
+p1131
+sg518
+V/senator/velmanette-montgomery/content/feed
+p1132
+ssVjohnson+c
+p1133
+(dp1134
+g480
+Vhttp://www.nysenate.gov/senator/craig-m-johnson
+p1135
+sg482
+(lp1136
+g411
+ag378
+ag443
+ag73
+ag145
+asg484
+V7
+sg486
+VJohnson
+p1137
+sg488
+Vhttp://twitter.com/HonCraigJohnson
+p1138
+sg489
+Nsg490
+(lp1139
+g309
+asg492
+(dp1140
+VDistrict Office:
+p1141
+(lp1142
+V151 Herricks Road, Suite 202
+p1143
+aVGarden City Park, NY 11040
+p1144
+aVP: (516) 746-5923
+p1145
+aVF: (516) 746-5926
+p1146
+asVAlbany Office:
+p1147
+(lp1148
+V814 Legislative Office Building
+p1149
+aVAlbany, NY 12247
+p1150
+aVP: (518) 455-2622
+p1151
+aVF: (518) 426-6894
+p1152
+assg505
+Nsg507
+(lp1153
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Senator_johnson_headshotWeb.jpg
+p1154
+sg514
+VCraig M. Johnson
+p1155
+sg516
+Vjohnson@senate.state.ny.us
+p1156
+sg518
+V/senator/craig-m-johnson/content/feed
+p1157
+ssVranzenhofer
+p1158
+(dp1159
+g480
+Vhttp://www.nysenate.gov/senator/michael-h-ranzenhofer
+p1160
+sg482
+(lp1161
+g2
+ag432
+ag281
+ag156
+ag83
+ag353
+asg484
+V61
+p1162
+sg486
+VRanzenhofer
+p1163
+sg488
+Nsg489
+Nsg490
+(lp1164
+sg492
+(dp1165
+VAlbany Office
+p1166
+(lp1167
+V315 Legislative Office Building
+p1168
+aVAlbany, NY 12247
+p1169
+aVTel: (518) 455-3161 / Fax: (518) 426-6963
+p1170
+asVDistrict Office
+p1171
+(lp1172
+V8203 Main Street, Suite 4
+p1173
+aVWilliamsville, NY  14221
+p1174
+aVTel: (716) 631-8695 / Fax: (716) 634-4321
+p1175
+assg505
+Vhttp://www.facebook.com/profile.php?id=1477429982
+p1176
+sg507
+(lp1177
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/hs.jpg
+p1178
+sg514
+VMichael H. Ranzenhofer
+p1179
+sg516
+Vranz@senate.state.ny.us
+p1180
+sg518
+V/senator/michael-h-ranzenhofer/content/feed
+p1181
+ssVdiaz
+p1182
+(dp1183
+g480
+Vhttp://www.nysenate.gov/senator/ruben-diaz
+p1184
+sg482
+(lp1185
+g281
+ag163
+ag271
+ag443
+ag309
+ag353
+ag34
+asg484
+V32
+p1186
+sg486
+VDiaz
+p1187
+sg488
+Nsg489
+Nsg490
+(lp1188
+g2
+asg492
+(dp1189
+VAlbany Office
+p1190
+(lp1191
+V307 Legislative Office Building
+p1192
+aVAlbany, NY 12247
+p1193
+aVTel:  (518) 455-2511 / Fax:  (518) 426-6945
+p1194
+asVDistrict Office
+p1195
+(lp1196
+V900 Rogers Place
+p1197
+aVThe Bronx, NY  10459
+p1198
+aVTel:(718) 991-3161 / Fax:(718) 991-0309
+p1199
+assg505
+Nsg507
+(lp1200
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Diaz-HS-2009.jpg
+p1201
+sg514
+VRuben Diaz
+p1202
+sg516
+Vdiaz@senate.state.ny.us
+p1203
+sg518
+V/senator/ruben-diaz/content/feed
+p1204
+ssVleibell
+p1205
+(dp1206
+g480
+Vhttp://www.nysenate.gov/senator/vincent-l-leibell
+p1207
+sg482
+(lp1208
+g397
+ag255
+ag163
+ag271
+ag443
+ag353
+ag55
+ag219
+asg484
+V40
+p1209
+sg486
+VLeibell
+p1210
+sg488
+Nsg489
+Nsg490
+(lp1211
+sg492
+(dp1212
+VAlbany Office
+p1213
+(lp1214
+VRoom 313, Legislative Office Building
+p1215
+aVAlbany, NY 12247
+p1216
+aVPhone: (518) 455-3111
+p1217
+aVFax: (518) 426-6977
+p1218
+asVDistrict Office
+p1219
+(lp1220
+V1441 Route 22, Suite 205
+p1221
+aVBrewster, NY 10509
+p1222
+aVPhone: (845) 279-3773
+p1223
+aVFax: (845) 279-7156
+p1224
+assg505
+Nsg507
+(lp1225
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD40_Leibell.jpg
+p1226
+sg514
+VVincent L. Leibell
+p1227
+sg516
+Vleibell@senate.state.ny.us
+p1228
+sg518
+V/senator/vincent-l-leibell/content/feed
+p1229
+ssVhassell-thompson
+p1230
+(dp1231
+g480
+Vhttp://www.nysenate.gov/senator/ruth-hassell-thompson
+p1232
+sg482
+(lp1233
+g463
+ag234
+ag271
+ag353
+ag122
+asg484
+V36
+p1234
+sg486
+VHassell-Thompson
+p1235
+sg488
+Nsg489
+Nsg490
+(lp1236
+g98
+asg492
+(dp1237
+VAlbany Office
+p1238
+(lp1239
+V612 Legislative Office Building
+p1240
+aVAlbany, NY 12247
+p1241
+aVTel: (518) 455-2061 / Fax: (518) 426-6998
+p1242
+asVDistrict Office
+p1243
+(lp1244
+V959 E. 233rd Street
+p1245
+aVBronx, NY 10466
+p1246
+aVTel: (718) 547-8854 / Fax: (718) 515-2718
+p1247
+aVDoles Center
+p1248
+aV250 South 6th Ave.
+p1249
+aVMount Vernon, NY 10550
+p1250
+aVTel: (914) 665-2400
+p1251
+assg505
+Nsg507
+(lp1252
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/WebBio Hassell-ThompsonHS.jpg
+p1253
+sg514
+VRuth Hassell-Thompson
+p1254
+sg516
+Vhassellt@senate.state.ny.us
+p1255
+sg518
+V/senator/ruth-hassell-thompson/content/feed
+p1256
+ssVthompson
+p1257
+(dp1258
+g480
+Vhttp://www.nysenate.gov/senator/antoine-m-thompson
+p1259
+sg482
+(lp1260
+g397
+ag83
+ag163
+ag378
+ag443
+ag73
+ag219
+asg484
+V60
+p1261
+sg486
+VThompson
+p1262
+sg488
+Nsg489
+Nsg490
+(lp1263
+g255
+asg492
+(dp1264
+VNiagara Falls Office
+p1265
+(lp1266
+VOffice of New York State Senator Antoine M. Thompson
+p1267
+aV1902 Main Street
+p1268
+aVNiagara Falls, New York 14305
+p1269
+aVP: 716-284-5789 
+p1270
+aVF:   716-284-5820
+p1271
+asVAlbany Office
+p1272
+(lp1273
+VOffice of New York State Senator Antoine M. Thompson
+p1274
+aVLegislative Office Building, Room 902
+p1275
+aVAlbany, New York 12247
+p1276
+aVP: 518-455-3371
+p1277
+aVF: 518-426-6969
+p1278
+asVDistrict Office
+p1279
+(lp1280
+VOffice of New York State Senator Antoine M. Thompson
+p1281
+aVWalter J. Mahoney State Office Building
+p1282
+aV65 Court Street, Room 213
+p1283
+aVBuffalo, New York 14202
+p1284
+aVP: 716-854-8705
+p1285
+aVF: 716-854-3051
+p1286
+assg505
+Nsg507
+(lp1287
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Thompson-HSweb.jpg
+p1288
+sg514
+VAntoine M Thompson
+p1289
+sg516
+Vathompso@senate.state.ny.us
+p1290
+sg518
+V/senator/antoine-m-thompson/content/feed
+p1291
+ssVfarley
+p1292
+(dp1293
+g480
+Vhttp://www.nysenate.gov/senator/hugh-t-farley
+p1294
+sg482
+(lp1295
+g2
+ag281
+ag163
+ag378
+ag122
+asg484
+V44
+p1296
+sg486
+VFarley
+p1297
+sg488
+Nsg489
+Nsg490
+(lp1298
+sg492
+(dp1299
+VJohnstown District Office:
+p1300
+(lp1301
+VCity Hall, 33-41 East Main Street
+p1302
+aVJohnstown, NY 12095
+p1303
+aVTel: (518) 762-3733
+p1304
+aVFax (518) 762-3721
+p1305
+asVAmsterdam District Office:
+p1306
+(lp1307
+V2430 Riverfront Center
+p1308
+aVAmsterdam, NY 12010
+p1309
+aVTel: (518) 843-2188
+p1310
+aVFax (518) 843-8363
+p1311
+asVAlbany Office:
+p1312
+(lp1313
+VRoom 706 Legislative Office Building
+p1314
+aVAlbany, NY 12247
+p1315
+aVTel: (518) 455-2181
+p1316
+aVFax (518) 455-2271
+p1317
+assg505
+Nsg507
+(lp1318
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD44_Farley.jpg
+p1319
+sg514
+VHugh T. Farley
+p1320
+sg516
+Vfarley@senate.state.ny.us
+p1321
+sg518
+V/senator/hugh-t-farley/content/feed
+p1322
+ssVstewart-cousins
+p1323
+(dp1324
+g480
+Vhttp://www.nysenate.gov/senator/andrea-stewart-cousins
+p1325
+sg482
+(lp1326
+g281
+ag463
+ag255
+ag163
+ag378
+ag55
+ag122
+ag219
+asg484
+V35
+p1327
+sg486
+VStewart-Cousins
+p1328
+sg488
+Nsg489
+Nsg490
+(lp1329
+g73
+asg492
+(dp1330
+VDistrict Office:
+p1331
+(lp1332
+V28 Wells Avenue
+p1333
+aVYonkers, NY 10701
+p1334
+aV(Tel.) (914) 423-4031
+p1335
+aV(Fax) (914) 423-0979
+p1336
+asVAlbany Office:
+p1337
+(lp1338
+V805 Legislative Office Building
+p1339
+aVAlbany, NY 12247
+p1340
+aV(Tel.) (518) 455-2585
+p1341
+aV(Fax) (518) 426-6811
+p1342
+assg505
+Vhttp://www.facebook.com/pages/Andrea-Stewart-Cousins/24808277897
+p1343
+sg507
+(lp1344
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(03-09-09) Stewart-Cousins HS-016.jpg
+p1345
+sg514
+VAndrea Stewart-Cousins
+p1346
+sg516
+Vscousins@senate.state.ny.us
+p1347
+sg518
+V/senator/andrea-stewart-cousins/content/feed
+p1348
+ssVhuntley
+p1349
+(dp1350
+g480
+Vhttp://www.nysenate.gov/senator/shirley-l-huntley
+p1351
+sg482
+(lp1352
+g114
+ag397
+ag16
+ag234
+ag411
+ag319
+ag198
+asg484
+V10
+p1353
+sg486
+VHuntley
+p1354
+sg488
+Nsg489
+Nsg490
+(lp1355
+g302
+asg492
+(dp1356
+VALBANY OFFICE
+p1357
+(lp1358
+VRoom 609, Legislative Office Building
+p1359
+aVAlbany, New York 12247
+p1360
+aV(518) 455-3531 Office
+p1361
+aV(518) 426-6859 Fax
+p1362
+asVDISTRICT OFFICE
+p1363
+(lp1364
+V161-10 Jamaica Avenue
+p1365
+aVSuite 504
+p1366
+aVJamaica, New York 11432
+p1367
+aV(718) 523-3069 Office
+p1368
+aV(718) 523-3670 Fax
+p1369
+asVSATELLITE OFFICE
+p1370
+(lp1371
+VRosedale-Laurelton 
+p1372
+aV133-24 233rd Street
+p1373
+aVRosedale, New York 11422
+p1374
+aV(718) 949-1601 Office
+p1375
+aV(718) 949-1619 Fax
+p1376
+assg505
+Vhttp://www.facebook.com/people/Shirley-L-Huntley/1210706953
+p1377
+sg507
+(lp1378
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(03-03-09) Huntley-HS-015_1.jpg
+p1379
+sg514
+VShirley L. Huntley
+p1380
+sg516
+Vshuntley@senate.state.ny.us
+p1381
+sg518
+V/senator/shirley-l-huntley/content/feed
+p1382
+ssVjohnson+o
+p1383
+(dp1384
+g480
+Vhttp://www.nysenate.gov/senator/owen-h-johnson
+p1385
+sg482
+(lp1386
+g281
+ag255
+ag163
+ag122
+ag34
+asg484
+V4
+sg486
+VJohnson
+p1387
+sg488
+Nsg489
+Nsg490
+(lp1388
+sg492
+(dp1389
+VAlbany Office
+p1390
+(lp1391
+V812 Legislative Office Building
+p1392
+aVAlbany, NY 12247
+p1393
+aVTel: (518) 455-3411
+p1394
+asVDistrict Office
+p1395
+(lp1396
+V23-24 Argyle Square
+p1397
+aVBabylon, NY 11702
+p1398
+aVTel: (631) 669-9200
+p1399
+assg505
+Vhttp://www.facebook.com/senatorowenjohnson
+p1400
+sg507
+(lp1401
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD4_Johnson.jpg
+p1402
+sg514
+VOwen H. Johnson
+p1403
+sg516
+Vojohnson@senate.state.ny.us
+p1404
+sg518
+V/senator/owen-h-johnson/content/feed
+p1405
+ssVlarkin
+p1406
+(dp1407
+g480
+Vhttp://www.nysenate.gov/senator/william-j-larkin-jr
+p1408
+sg482
+(lp1409
+g156
+ag163
+ag378
+ag443
+ag122
+ag34
+ag219
+asg484
+V39
+p1410
+sg486
+VLarkin
+p1411
+sg488
+Nsg489
+Nsg490
+(lp1412
+sg492
+(dp1413
+VAlbany Office
+p1414
+(lp1415
+VRoom 406, Legislative Office Building
+p1416
+aVAlbany, NY 12247
+p1417
+aV(518) 455-2770
+p1418
+asVDistrict Office
+p1419
+(lp1420
+V1093 Little Britain Rd
+p1421
+aVNew Windsor, NY 12553
+p1422
+aV(845) 567-1270
+p1423
+assg505
+Nsg507
+(lp1424
+g509
+ag510
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/head.JPG
+p1425
+sg514
+VWilliam J. Larkin Jr.
+p1426
+sg516
+Vlarkin@senate.state.ny.us
+p1427
+sg518
+V/senator/william-j-larkin-jr/content/feed
+p1428
+ssVfoley
+p1429
+(dp1430
+g480
+Vhttp://www.nysenate.gov/senator/brian-x-foley
+p1431
+sg482
+(lp1432
+g397
+ag463
+ag411
+ag246
+ag255
+ag319
+ag34
+asg484
+V3
+sg486
+VFoley
+p1433
+sg488
+Nsg489
+Vhttp://www.youtube.com/user/SenateDistrict3
+p1434
+sg490
+(lp1435
+g281
+asg492
+(dp1436
+VDistrict Offices:
+p1437
+(lp1438
+VState Office Bldg, Suite 2A-1
+p1439
+aVVeterans' Memorial Highway
+p1440
+aVHauppauge, NY 11788
+p1441
+aV631-360-3356
+p1442
+asVCourthouse Corporate Center
+p1443
+(lp1444
+V320 Carleton Avenue
+p1445
+aVSuite 1700
+p1446
+aVCentral Islip, NY 11722
+p1447
+aV631-231-0517 
+p1448
+asVAlbany Office:
+p1449
+(lp1450
+V905 Legislative Office Building
+p1451
+aVAlbany, New York 12247
+p1452
+aVtel - 518-455-2303
+p1453
+aVfax - 518-426-6825
+p1454
+assg505
+Vhttp://www.facebook.com/pages/Brian-Foley/52575085610?ref=ts
+p1455
+sg507
+(lp1456
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Foley Headshot Flag .jpg
+p1457
+sg514
+VBrian X Foley
+p1458
+sg516
+Vsd3info@gmail.com
+p1459
+sg518
+V/senator/brian-x-foley/content/feed
+p1460
+ssVbonacic
+p1461
+(dp1462
+g480
+Vhttp://www.nysenate.gov/senator/john-j-bonacic
+p1463
+sg482
+(lp1464
+g281
+ag16
+ag271
+ag353
+ag73
+ag145
+asg484
+V42
+p1465
+sg486
+VBonacic
+p1466
+sg488
+Vhttp://twitter.com/johnbonacic
+p1467
+sg489
+Nsg490
+(lp1468
+sg492
+(dp1469
+VDistrict Offices:
+p1470
+(lp1471
+V201 Dolson Avenue, Suite F
+p1472
+aVMiddletown, NY  10940
+p1473
+aV(845) 344 3311
+p1474
+asV111 Main Street
+p1475
+(lp1476
+VDelhi, NY 13753
+p1477
+aV(607) 746-6675
+p1478
+asVAlbany Office:
+p1479
+(lp1480
+VRoom 508 Legislative Office Building
+p1481
+aVAlbany, NY 12247
+p1482
+aV(518) 455-3181
+p1483
+assg505
+Vhttp://www.facebook.com/profile.php?id=1547091564&ref=profile
+p1484
+sg507
+(lp1485
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/42ProfilePic Bonacic.jpg
+p1486
+sg514
+VJohn J. Bonacic
+p1487
+sg516
+Vbonacic@senate.state.ny.us
+p1488
+sg518
+V/senator/john-j-bonacic/content/feed
+p1489
+ssVmarcellino
+p1490
+(dp1491
+g480
+Vhttp://www.nysenate.gov/senator/carl-l-marcellino
+p1492
+sg482
+(lp1493
+g281
+ag114
+ag411
+ag255
+ag163
+ag55
+ag211
+asg484
+V5
+sg486
+VMarcellino
+p1494
+sg488
+Nsg489
+Nsg490
+(lp1495
+sg492
+(dp1496
+VAlbany Office
+p1497
+(lp1498
+VRoom 517, Legislative Office Building
+p1499
+aVAlbany, NY 12247
+p1500
+aV(518) 455-2390
+p1501
+asVDistrict Office
+p1502
+(lp1503
+V250 Townsend Square
+p1504
+aVOyster Bay, NY 11771
+p1505
+aV(516) 922-1811
+p1506
+aVToll Free: 1-800-332-6977
+p1507
+assg505
+Nsg507
+(lp1508
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/headshotWEB.jpg
+p1509
+sg514
+VCarl L Marcellino
+p1510
+sg516
+Vmarcelli@senate.state.ny.us
+p1511
+sg518
+V/senator/carl-l-marcellino/content/feed
+p1512
+ssVaubertine
+p1513
+(dp1514
+g480
+Vhttp://www.nysenate.gov/senator/darrel-j-aubertine
+p1515
+sg482
+(lp1516
+g463
+ag98
+ag339
+ag319
+ag34
+ag219
+asg484
+V48
+p1517
+sg486
+VAubertine
+p1518
+sg488
+Nsg489
+Nsg490
+(lp1519
+g432
+asg492
+(dp1520
+VAlbany Office
+p1521
+(lp1522
+V903 Legislative Office Building
+p1523
+aVAlbany, New York 12247
+p1524
+aV518-455-2761 (office) / 518-426-6946 (fax)
+p1525
+asVDistrict Office (main office)
+p1526
+(lp1527
+V317 Washington Street
+p1528
+aV4th Floor
+p1529
+aVWatertown, NY 13601
+p1530
+aV315-782-3418 (office) / 315-782-6357 (fax)
+p1531
+asVOswego Satellite Office
+p1532
+(lp1533
+VSUNY Oswego
+p1534
+assg505
+Nsg507
+(lp1535
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/2009AubertineHeadshot.jpg
+p1536
+sg514
+VDarrel J. Aubertine
+p1537
+sg516
+Vaubertin@senate.state.ny.us
+p1538
+sg518
+V/senator/darrel-j-aubertine/content/feed
+p1539
+ssVrobach
+p1540
+(dp1541
+g480
+Vhttp://www.nysenate.gov/senator/joseph-e-robach
+p1542
+sg482
+(lp1543
+g397
+ag463
+ag234
+ag163
+ag319
+ag55
+ag34
+asg484
+V56
+p1544
+sg486
+VRobach
+p1545
+sg488
+Nsg489
+Vhttp://www.youtube.com/user/JoeRobach
+p1546
+sg490
+(lp1547
+sg492
+(dp1548
+VAlbany Office:
+p1549
+(lp1550
+V608 Legislative Office Building
+p1551
+aVAlbany, NY 12247
+p1552
+aV(518) 455-2909
+p1553
+aVRochester Office:
+p1554
+aV2300 W. Ridge Road
+p1555
+aVRochester, NY 14626
+p1556
+aV(585) 225-3650
+p1557
+assg505
+Vhttp://www.facebook.com/pages/Joe-Robach/22775973089
+p1558
+sg507
+(lp1559
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD56_Robach.jpg
+p1560
+sg514
+VJoseph E. Robach
+p1561
+sg516
+Vrobach@senate.state.ny.us
+p1562
+sg518
+V/senator/joseph-e-robach/content/feed
+p1563
+ssVstavisky
+p1564
+(dp1565
+g480
+Vhttp://www.nysenate.gov/senator/toby-ann-stavisky
+p1566
+sg482
+(lp1567
+g2
+ag83
+ag411
+ag163
+ag34
+asg484
+V16
+p1568
+sg486
+VStavisky
+p1569
+sg488
+Nsg489
+Nsg490
+(lp1570
+g319
+asg492
+(dp1571
+VDistrict Office:
+p1572
+(lp1573
+V144-36 Willets Point Blvd.
+p1574
+aVFlushing, NY 11357
+p1575
+aVTel:   (718) 445-0004 
+p1576
+aVFax:  (718) 445-8398
+p1577
+asVAlbany Office:
+p1578
+(lp1579
+V509 Legislative Office Building 
+p1580
+aVAlbany, NY 12247
+p1581
+aVTel:   (518) 455-3461 
+p1582
+aVFax:  (518) 426-6857
+p1583
+assg505
+Vhttp://www.facebook.com/pages/Toby-Ann-Stavisky/142077753628?ref=ts
+p1584
+sg507
+(lp1585
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Official Website Headshot_0.jpg
+p1586
+sg514
+VToby Ann Stavisky
+p1587
+sg516
+Vstavisky@senate.state.ny.us
+p1588
+sg518
+V/senator/toby-ann-stavisky/content/feed
+p1589
+ssVmorahan
+p1590
+(dp1591
+g480
+Vhttp://www.nysenate.gov/senator/thomas-p-morahan
+p1592
+sg482
+(lp1593
+g281
+ag411
+ag246
+ag55
+ag73
+ag198
+asg484
+V38
+p1594
+sg486
+VMorahan
+p1595
+sg488
+Nsg489
+Nsg490
+(lp1596
+g198
+asg492
+(dp1597
+VAlbany Office
+p1598
+(lp1599
+VRoom 803 Legislative Office Building
+p1600
+aVAlbany, New York 12247
+p1601
+aVPHONE 
+p1602
+aV(518) 455-3261
+p1603
+aVFAX 
+p1604
+aV(518) 455-2959
+p1605
+aVOffice Hours: Monday - Friday 9:00 AM -5:00 PM with exception of Holidays.
+p1606
+asVDistrict Office
+p1607
+(lp1608
+V158 Airport Executive Park
+p1609
+aVNanuet, New York 10954
+p1610
+aVPHONE 
+p1611
+aV(845) 425-1818
+p1612
+aVFAX 
+p1613
+aV(845) 425-6473
+p1614
+aVOffice Hours: Monday - Friday 8:30 AM -5:00 PM with exception of Holidays.
+p1615
+aV&lt;!--Session data-->
+p1616
+aV&lt;!--Session data-->
+p1617
+aV&lt;!--Session data-->
+p1618
+assg505
+Nsg507
+(lp1619
+g509
+ag510
+ag1011
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/MORAHAN headshot_0.jpg
+p1620
+sg514
+VThomas P. Morahan
+p1621
+sg516
+Vmorahan@senate.state.ny.us
+p1622
+sg518
+V/senator/thomas-p-morahan/content/feed
+p1623
+ssVkrueger
+p1624
+(dp1625
+g480
+Vhttp://www.nysenate.gov/senator/liz-krueger
+p1626
+sg482
+(lp1627
+g281
+ag163
+ag319
+ag271
+ag122
+ag211
+asg484
+V26
+p1628
+sg486
+VKrueger
+p1629
+sg488
+Nsg489
+Nsg490
+(lp1630
+sg492
+(dp1631
+VAlbany Office
+p1632
+(lp1633
+V503 Capitol Building
+p1634
+aVAlbany, New York 12247
+p1635
+aVTel:   
+p1636
+aV(518) 455-2297
+p1637
+aV / Fax:  
+p1638
+aV(518) 426-6874
+p1639
+aV&lt;!--Session data-->
+p1640
+aV&lt;!--Session data-->
+p1641
+asVDistrict Office
+p1642
+(lp1643
+V211 East 43rd Street, Suite 401
+p1644
+aVNew York, NY 10017
+p1645
+aVTel:   
+p1646
+aV(212) 490-9535
+p1647
+aV / Fax:  
+p1648
+aV(212) 490-2151
+p1649
+assg505
+Nsg507
+(lp1650
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/fall 07 color.JPG
+p1651
+sg514
+VLiz Krueger
+p1652
+sg516
+Vlkrueger@senate.state.ny.us
+p1653
+sg518
+V/senator/liz-krueger/content/feed
+p1654
+ssVonorato
+p1655
+(dp1656
+g480
+Vhttp://www.nysenate.gov/senator/george-onorato
+p1657
+sg482
+(lp1658
+g281
+ag339
+ag319
+ag353
+ag145
+asg484
+V12
+p1659
+sg486
+VOnorato
+p1660
+sg488
+Vhttp://twitter.com/SenOnorato
+p1661
+sg489
+Nsg490
+(lp1662
+g55
+asg492
+(dp1663
+VDistrict Office:
+p1664
+(lp1665
+V28-11 Astoria Blvd.
+p1666
+aVLong Island City, NY 11102
+p1667
+aVTel: 
+p1668
+aV(718) 545-9706
+p1669
+aVFax: 
+p1670
+aV(718) 726-2036
+p1671
+asVAlbany Office:
+p1672
+(lp1673
+V310 Legislative Office Building
+p1674
+aVAlbany, NY 12247
+p1675
+aVTel: 
+p1676
+aV(518) 455-3486
+p1677
+aVFax: 
+p1678
+aV(518) 426-6929
+p1679
+assg505
+Nsg507
+(lp1680
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/onoratorz.jpg
+p1681
+sg514
+VGeorge Onorato
+p1682
+sg516
+Vonorato@senate.state.ny.us
+p1683
+sg518
+V/senator/george-onorato/content/feed
+p1684
+ssVduane
+p1685
+(dp1686
+g480
+Vhttp://www.nysenate.gov/senator/thomas-duane
+p1687
+sg482
+(lp1688
+g114
+ag16
+ag98
+ag83
+ag163
+ag198
+ag122
+ag211
+asg484
+V29
+p1689
+sg486
+VDuane
+p1690
+sg488
+Nsg489
+Nsg490
+(lp1691
+g378
+asg492
+(dp1692
+VAlbany Office
+p1693
+(lp1694
+V430 State Capitol  Building
+p1695
+aVAlbany, NY 12247
+p1696
+aVTel: (518) 455-2451
+p1697
+aVFax: (518) 426-6846
+p1698
+asVDistrict Office
+p1699
+(lp1700
+V322 Eighth Avenue, Suite 1700
+p1701
+aVNew York, NY 10001
+p1702
+aVTel: (212) 633-8052
+p1703
+aVFax: (212) 633-8096
+p1704
+assg505
+Nsg507
+(lp1705
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/DuaneHeadshot07ColorBIO.jpg
+p1706
+sg514
+VThomas Duane
+p1707
+sg516
+Vduane@senate.state.ny.us
+p1708
+sg518
+V/senator/thomas-duane/content/feed
+p1709
+ssVmaziarz
+p1710
+(dp1711
+g480
+Vhttp://www.nysenate.gov/senator/george-d-maziarz
+p1712
+sg482
+(lp1713
+g98
+ag339
+ag163
+ag319
+ag353
+asg484
+V62
+p1714
+sg486
+VMaziarz
+p1715
+sg488
+Vhttp://twitter.com/senatormaziarz
+p1716
+sg489
+Vhttp://www.youtube.com/user/SenatorMaziarz
+p1717
+sg490
+(lp1718
+g339
+asg492
+(dp1719
+VDistrict Office:
+p1720
+(lp1721
+V2578 Niagara Falls Boulevard
+p1722
+aVSuite 600
+p1723
+aVWheatfield, NY 14304
+p1724
+aV(716) 731-8740
+p1725
+asVSatellite Office:
+p1726
+(lp1727
+VSUNY College at Brockport 
+p1728
+aV350 New Campus Drive
+p1729
+aVBrockport, NY, NY 14420
+p1730
+aV(585) 637-5800
+p1731
+asVAlbany Office:
+p1732
+(lp1733
+VRoom 947, Legislative Office Building
+p1734
+aVAlbany, NY 12247
+p1735
+aV(518) 455-2024
+p1736
+assg505
+Nsg507
+(lp1737
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD62_Maziarz_0.jpg
+p1738
+sg514
+VGeorge D. Maziarz
+p1739
+sg516
+Vmaziarz@senate.state.ny.us
+p1740
+sg518
+V/senator/george-d-maziarz/content/feed
+p1741
+ssVaddabbo
+p1742
+(dp1743
+g480
+Vhttp://www.nysenate.gov/senator/joseph-p-addabbo-jr
+p1744
+sg482
+(lp1745
+g2
+ag397
+ag411
+ag55
+ag145
+ag34
+ag219
+asg484
+V15
+p1746
+sg486
+VAddabbo
+p1747
+sg488
+Nsg489
+Nsg490
+(lp1748
+g246
+asg492
+(dp1749
+VDistrict Office:
+p1750
+(lp1751
+V159-53 102nd St
+p1752
+aVHoward Beach, NY 11414
+p1753
+aV(718) 738-1111
+p1754
+aVFax - (718) 322-5760
+p1755
+asVSatellite Office:
+p1756
+(lp1757
+V66-85 73rd Place
+p1758
+aVMiddle Village, NY 11379
+p1759
+aV(718) 497-1630
+p1760
+aVFax - (718) 497-1761
+p1761
+asVAlbany Office:
+p1762
+(lp1763
+V815 Legislative Office Building
+p1764
+aVAlbany, NY 12247
+p1765
+aV(518) 455-2322
+p1766
+aVFax - (518) 426-6875
+p1767
+assg505
+Vhttp://www.facebook.com/pages/Senator-Joe-Addabbo/157310354545?ref=search&sid=567176665.3736433734..1
+p1768
+sg507
+(lp1769
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Addabbo.SD15.jpg
+p1770
+sg514
+VJoseph P. Addabbo Jr
+p1771
+sg516
+Vaddabbo@senate.state.ny.us
+p1772
+sg518
+V/senator/joseph-p-addabbo-jr/content/feed
+p1773
+ssVgriffo
+p1774
+(dp1775
+g480
+Vhttp://www.nysenate.gov/senator/joseph-griffo
+p1776
+sg482
+(lp1777
+g463
+ag83
+ag246
+ag339
+ag319
+ag145
+ag219
+asg484
+V47
+p1778
+sg486
+VGriffo
+p1779
+sg488
+Nsg489
+Vhttp://www.youtube.com/user/SenJoeGriffo
+p1780
+sg490
+(lp1781
+sg492
+(dp1782
+VAlbany Office
+p1783
+(lp1784
+VLegislative Office Building
+p1785
+aVRm. 302
+p1786
+aVAlbany, New York 12247
+p1787
+aV(518) 455-3334
+p1788
+aVFax: (518) 426-6921
+p1789
+asVDistrict Office
+p1790
+(lp1791
+V207 Genesee Street
+p1792
+aVRm. 408
+p1793
+aVUtica, New York 13501
+p1794
+aV(315) 793-9072
+p1795
+aV(800) 226-1558
+p1796
+aVFax: (315) 793--0298
+p1797
+assg505
+Vhttp://www.facebook.com/SenatorJoeGriffo
+p1798
+sg507
+(lp1799
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD47_Griffo.jpg
+p1800
+sg514
+VJoseph A. Griffo
+p1801
+sg516
+Vgriffo@senate.state.ny.us
+p1802
+sg518
+V/senator/joseph-griffo/content/feed
+p1803
+ssVlanza
+p1804
+(dp1805
+g480
+Vhttp://www.nysenate.gov/senator/andrew-j-lanza
+p1806
+sg482
+(lp1807
+g302
+ag397
+ag16
+ag353
+ag34
+asg484
+V24
+p1808
+sg486
+VLanza
+p1809
+sg488
+Vhttp://www.twitter.com/senatorlanza
+p1810
+sg489
+Nsg490
+(lp1811
+sg492
+(dp1812
+VAlbany Office
+p1813
+(lp1814
+V604 LOB
+p1815
+aVAlbany, NY 12247
+p1816
+aV(518) 455-3215
+p1817
+aV(518) 426-6852 (Fax)
+p1818
+asVDistrict Office
+p1819
+(lp1820
+V3845 Richmond Ave.
+p1821
+aVSuite 2A
+p1822
+aVStaten Island, NY 10312
+p1823
+aV(718) 984-4073
+p1824
+aV(718) 984-4455 (Fax)
+p1825
+assg505
+Vhttp://www.facebook.com/pages/Andrew-J-Lanza/45298833298
+p1826
+sg507
+(lp1827
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/headshotweb.jpg
+p1828
+sg514
+VAndrew J Lanza
+p1829
+sg516
+Vlanza@senate.state.ny.us
+p1830
+sg518
+V/senator/andrew-j-lanza/content/feed
+p1831
+ssVklein
+p1832
+(dp1833
+g480
+Vhttp://www.nysenate.gov/senator/jeffrey-d-klein
+p1834
+sg482
+(lp1835
+g281
+ag16
+ag163
+ag378
+ag309
+ag353
+ag55
+ag122
+asg484
+V34
+p1836
+sg486
+VKlein
+p1837
+sg488
+Nsg489
+Nsg490
+(lp1838
+sg492
+(dp1839
+VAlbany Office
+p1840
+(lp1841
+VCapitol Building
+p1842
+aVRoom 427
+p1843
+aVAlbany, New York 12247
+p1844
+asVDistrict Office:
+p1845
+(lp1846
+VNew Office Address
+p1847
+aV3612 East Tremont Ave
+p1848
+aVBronx, NY 10465
+p1849
+aVTelephone
+p1850
+aV718-822-2049
+p1851
+aV518-455-3595
+p1852
+aVToll Free - (800) 718-2039
+p1853
+aVFax
+p1854
+aV718-822-2321
+p1855
+assg505
+Nsg507
+(lp1856
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/JK_Headshot_2009mp.jpg
+p1857
+sg514
+VJeffrey D. Klein
+p1858
+sg516
+Vjdklein@senate.state.ny.us
+p1859
+sg518
+V/senator/jeffrey-d-klein/content/feed
+p1860
+ssVschneiderman
+p1861
+(dp1862
+g480
+Vhttp://www.nysenate.gov/senator/eric-t-schneiderman
+p1863
+sg482
+(lp1864
+g114
+ag83
+ag339
+ag255
+ag319
+ag353
+asg484
+V31
+p1865
+sg486
+VSchneiderman
+p1866
+sg488
+Nsg489
+Nsg490
+(lp1867
+g16
+asg492
+(dp1868
+VAlbany Office
+p1869
+(lp1870
+V708 Legislative Office Building
+p1871
+aVAlbany, NY 12247
+p1872
+aVPhone: (518) 455-2041
+p1873
+aVFax: (518) 426-6847
+p1874
+asVDistrict Office
+p1875
+(lp1876
+V5030 Broadway
+p1877
+aVNew York, NY 10034
+p1878
+aVPhone: (212) 544-0173
+p1879
+aVFax: (212) 544-0256
+p1880
+assg505
+Vhttp://www.facebook.com/profile.php?id=630823745&ref=profile
+p1881
+sg507
+(lp1882
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/2009.headshot.jpg
+p1883
+sg514
+VEric T. Schneiderman
+p1884
+sg516
+Vschneide@senate.state.ny.us
+p1885
+sg518
+V/senator/eric-t-schneiderman/content/feed
+p1886
+ssVskelos
+p1887
+(dp1888
+g480
+Vhttp://www.nysenate.gov/senator/dean-g-skelos
+p1889
+sg482
+(lp1890
+g122
+asg484
+V9
+sg486
+VSkelos
+p1891
+sg488
+Nsg489
+Nsg490
+(lp1892
+sg492
+(dp1893
+VAlbany Office
+p1894
+(lp1895
+VRoom 907 LOB
+p1896
+aVAlbany, NY 12247
+p1897
+aVPhone: (518) 455-3171
+p1898
+asVDistrict Office
+p1899
+(lp1900
+V55 Front Street
+p1901
+aVRockville Centre, NY 11570
+p1902
+aVPhone: (516) 766-8383
+p1903
+assg505
+Nsg507
+(lp1904
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD9_Skelos_4.jpg
+p1905
+sg514
+VDean G. Skelos
+p1906
+sg516
+Vskelos@senate.state.ny.us
+p1907
+sg518
+V/senator/dean-g-skelos/content/feed
+p1908
+ssVstachowski
+p1909
+(dp1910
+g480
+Vhttp://www.nysenate.gov/senator/william-t-stachowski
+p1911
+sg482
+(lp1912
+g432
+ag163
+ag443
+ag309
+ag55
+ag145
+ag122
+asg484
+V58
+p1913
+sg486
+VStachowski
+p1914
+sg488
+Vhttps://twitter.com/senstachowski
+p1915
+sg489
+Nsg490
+(lp1916
+g463
+asg492
+(dp1917
+VAlbany Office
+p1918
+(lp1919
+V918 Legislative Office Building
+p1920
+aVAlbany, New York 12247
+p1921
+aVPhone (518)-455-2426
+p1922
+aVFax:  
+p1923
+aV(518) 426-6851
+p1924
+asVDistrict Office
+p1925
+(lp1926
+V2030 Clinton Street
+p1927
+aVBuffalo, New York 14206
+p1928
+aVPhone (716)-826-3344
+p1929
+aVFax   (716)-823-6372
+p1930
+assg505
+Vhttp://www.facebook.com/pages/Senator-William-T-Stachowski/98309792160
+p1931
+sg507
+(lp1932
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Stachowski headshot.jpg
+p1933
+sg514
+VWilliam T. Stachowski
+p1934
+sg516
+Vstachows@senate.state.ny.us
+p1935
+sg518
+V/senator/william-t-stachowski/content/feed
+p1936
+ssVlavalle
+p1937
+(dp1938
+g480
+Vhttp://www.nysenate.gov/senator/kenneth-p-lavalle
+p1939
+sg482
+(lp1940
+g2
+ag411
+ag163
+ag319
+ag443
+ag353
+ag122
+asg484
+V1
+sg486
+VLaValle
+p1941
+sg488
+Vhttp://twitter.com/senatorlavalle
+p1942
+sg489
+Nsg490
+(lp1943
+sg492
+(dp1944
+VDistrict Office:
+p1945
+(lp1946
+V325 Middle Country Road, Suite 4
+p1947
+aVSelden, NY 11784
+p1948
+aV(631) 696-6900
+p1949
+asVAlbany Office:
+p1950
+(lp1951
+VRoom 707, Legislative Office Building
+p1952
+aVAlbany, NY 12247
+p1953
+aV(518) 455-3121
+p1954
+assg505
+Vhttp://www.facebook.com/pages/Senator-Kenneth-P-LaValle/58246288663?v=info
+p1955
+sg507
+(lp1956
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD1_Lavalle-.jpg
+p1957
+sg514
+VKenneth P. LaValle
+p1958
+sg516
+Vlavalle@senate.state.ny.us
+p1959
+sg518
+V/senator/kenneth-p-lavalle/content/feed
+p1960
+ssValesi
+p1961
+(dp1962
+g480
+Vhttp://www.nysenate.gov/senator/james-s-alesi
+p1963
+sg482
+(lp1964
+g463
+ag83
+ag339
+ag319
+ag443
+ag55
+asg484
+V55
+p1965
+sg486
+VAlesi
+p1966
+sg488
+Vhttp://twitter.com/senatoralesi
+p1967
+sg489
+Vhttp://www.youtube.com/55jsa
+p1968
+sg490
+(lp1969
+sg492
+(dp1970
+VDistrict Office:
+p1971
+(lp1972
+V220 Packetts Landing
+p1973
+aVFairport, NY 14450
+p1974
+aVPhone:  (585) 223-1800
+p1975
+aVFax:  (585) 223-3084
+p1976
+asVAlbany Office:
+p1977
+(lp1978
+VRoom  304 Legislative Office Building
+p1979
+aVAlbany, NY 12247
+p1980
+aVPhone: (518) 455-2015
+p1981
+aVFax: (518) 426-6968
+p1982
+assg505
+Vhttp://www.facebook.com/pages/Jim-Alesi/134704380636
+p1983
+sg507
+(lp1984
+g509
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Senator Alesi - 55th- Headshot 6-2008.JPG
+p1985
+sg514
+VJames S. Alesi
+p1986
+sg516
+Valesi@senate.state.ny.us
+p1987
+sg518
+V/senator/james-s-alesi/content/feed
+p1988
+ssVflanagan
+p1989
+(dp1990
+g480
+Vhttp://www.nysenate.gov/senator/john-j-flanagan
+p1991
+sg482
+(lp1992
+g2
+ag16
+ag234
+ag83
+ag411
+ag319
+asg484
+V2
+sg486
+VFlanagan
+p1993
+sg488
+Nsg489
+Vhttp://www.youtube.com/user/senatorflanagan
+p1994
+sg490
+(lp1995
+sg492
+(dp1996
+VAlbany Office
+p1997
+(lp1998
+VRoom 613 LOB
+p1999
+aVAlbany, NY 12247
+p2000
+aV518-455-2071
+p2001
+aV518-426-6904 FAX
+p2002
+asVDistrict Office
+p2003
+(lp2004
+V260 Middle Country Road, Suite 203
+p2005
+aVSmithtown, New York 11787
+p2006
+aV631-361-2154
+p2007
+aV631-361-5367 FAX
+p2008
+aV  
+p2009
+aVIf you wish to contact Senator Flanagan by e-mail,
+p2010
+aVplease submit your comments, questions
+p2011
+aVand 
+p2012
+aVissues to 
+p2013
+aVflanagan@senate.state.ny.us
+p2014
+aVThe contact form at the bottom of this page is
+p2015
+aVadministered outside of 
+p2016
+aVSenator Flanagan's office
+p2017
+aVand there have been delays 
+p2018
+aVin the processing of
+p2019
+aVmessages. 
+p2020
+assg505
+Nsg507
+(lp2021
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/flanaganheadshot2.jpg
+p2022
+sg514
+VJohn J. Flanagan
+p2023
+sg516
+Vflanagan@senate.state.ny.us
+p2024
+sg518
+V/senator/john-j-flanagan/content/feed
+p2025
+ssVserrano
+p2026
+(dp2027
+g480
+Vhttp://www.nysenate.gov/senator/jose-m-serrano
+p2028
+sg482
+(lp2029
+g2
+ag411
+ag246
+ag255
+ag319
+ag122
+asg484
+V28
+p2030
+sg486
+VSerrano
+p2031
+sg488
+Vhttp://twitter.com/senatorserrano
+p2032
+sg489
+Nsg490
+(lp2033
+g83
+asg492
+(dp2034
+VDistrict Office:
+p2035
+(lp2036
+V157 East 104th Street (Ground Level)
+p2037
+aVNew York, New York 10029
+p2038
+aVTel: (212)-828-5829
+p2039
+aVFax: (212)-828-2420
+p2040
+asVAlbany Office:
+p2041
+(lp2042
+V848 Legislative Office Building
+p2043
+aVAlbany, New York 12247
+p2044
+aVTel:  (518) 455-2795
+p2045
+aVFax:  (518) 426-6886
+p2046
+assg505
+Vhttp://www.facebook.com/pages/New-York-State-Senator-Serrano/134976763347?v=info
+p2047
+sg507
+(lp2048
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/serranoheadshot.JPG
+p2049
+sg514
+VJose M. Serrano
+p2050
+sg516
+Vserrano@senate.state.ny.us
+p2051
+sg518
+V/senator/jose-m-serrano/content/feed
+p2052
+ssVvolker
+p2053
+(dp2054
+g480
+Vhttp://www.nysenate.gov/senator/dale-m-volker
+p2055
+sg482
+(lp2056
+g16
+ag463
+ag98
+ag163
+ag353
+ag198
+ag122
+ag34
+asg484
+V59
+p2057
+sg486
+VVolker
+p2058
+sg488
+Nsg489
+Nsg490
+(lp2059
+sg492
+(dp2060
+VWarsaw District Office:
+p2061
+(lp2062
+V143 North Main Street - Room 103
+p2063
+aVWarsaw, New York 14569
+p2064
+aV585-786-5048
+p2065
+asVMain District Office:
+p2066
+(lp2067
+V4729 Transit Road, Suite #5
+p2068
+aVDepew, New York  14043
+p2069
+aV716.656.8544
+p2070
+asVAlbany Office:
+p2071
+(lp2072
+VLegislative Office Building, Room 808
+p2073
+aVAlbany, New York 12247
+p2074
+aV518.455.3471
+p2075
+assg505
+Nsg507
+(lp2076
+g509
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/volker5x7.jpg
+p2077
+sg514
+VDale M. Volker
+p2078
+sg516
+Vvolker@senate.state.ny.us
+p2079
+sg518
+V/senator/dale-m-volker/content/feed
+p2080
+ssVdilan
+p2081
+(dp2082
+g480
+Vhttp://www.nysenate.gov/senator/martin-malave-dilan
+p2083
+sg482
+(lp2084
+g397
+ag156
+ag246
+ag163
+ag353
+ag55
+ag122
+asg484
+V17
+p2085
+sg486
+VDilan
+p2086
+sg488
+Nsg489
+Vhttp://www.youtube.com/user/SenMMDilan
+p2087
+sg490
+(lp2088
+g34
+asg492
+(dp2089
+VAlbany Office
+p2090
+(lp2091
+V811 Legislative Office Building
+p2092
+aVAlbany, NY 12247
+p2093
+aVTel:   (518) 455-2177 / Fax:  (518) 426-6947
+p2094
+asVDistrict Office
+p2095
+(lp2096
+V786 Knickerbocker Avenue
+p2097
+aVBrooklyn, NY 11207
+p2098
+aVTel:   (718) 573-1726 / Fax:  (718) 573-2407
+p2099
+assg505
+Vhttp://www.facebook.com/pages/Martin-Malave-Dilan/80483802077
+p2100
+sg507
+(lp2101
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(02-11-09) Dilan-HS-046.jpg
+p2102
+sg514
+VMartin Malavé Dilan
+p2103
+sg516
+Vdilan@senate.state.ny.us
+p2104
+sg518
+V/senator/martin-malave-dilan/content/feed
+p2105
+ssVvalesky
+p2106
+(dp2107
+g480
+Vhttp://www.nysenate.gov/senator/david-j-valesky
+p2108
+sg482
+(lp2109
+g432
+ag83
+ag339
+ag163
+ag378
+ag73
+ag122
+ag34
+asg484
+V49
+p2110
+sg486
+VValesky
+p2111
+sg488
+Vhttps://twitter.com/SenDavidValesky
+p2112
+sg489
+Nsg490
+(lp2113
+sg492
+(dp2114
+VAlbany Office
+p2115
+(lp2116
+V416 State Capitol Building
+p2117
+aVAlbany, New York 12247
+p2118
+aVPhone: 518-455-2838
+p2119
+aVFax: 518-426-6885
+p2120
+asVDistrict Office
+p2121
+(lp2122
+V805 State Office Building,
+p2123
+aV333 East Washington Street
+p2124
+aVSyracuse, New York 13202
+p2125
+aVPhone: 315-478-8745
+p2126
+aVFax: 315-474-3804
+p2127
+assg505
+Nsg507
+(lp2128
+g572
+ag573
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/Valesky-HSmp.jpg
+p2129
+sg514
+VDavid J. Valesky
+p2130
+sg516
+Vvalesky@senate.state.ny.us
+p2131
+sg518
+V/senator/david-j-valesky/content/feed
+p2132
+ssVsquadron
+p2133
+(dp2134
+g480
+Vhttp://www.nysenate.gov/senator/daniel-l-squadron
+p2135
+sg482
+(lp2136
+g16
+ag156
+ag83
+ag411
+ag271
+ag211
+ag34
+ag219
+asg484
+V25
+p2137
+sg486
+VSquadron
+p2138
+sg488
+Nsg489
+Nsg490
+(lp2139
+g211
+asg492
+(dp2140
+VDistrict Offices:
+p2141
+(lp2142
+V401 Broadway, Suite 1901
+p2143
+aVNew York, New York 10013
+p2144
+aVTel: 212-298-5565
+p2145
+aVFax: 212-431-7836
+p2146
+asVBrooklyn District Office: 
+p2147
+(lp2148
+VBorough Hall, Room 240
+p2149
+aV209 Joralemon Street
+p2150
+aVBrooklyn, NY 11201
+p2151
+aVPhone: (718) 802-3818
+p2152
+asVAlbany Office:
+p2153
+(lp2154
+V946 Legislative Office Building
+p2155
+aVAlbany, New York 12247
+p2156
+aVTel: 518-455-2625
+p2157
+aVFax: 518-426-6956
+p2158
+assg505
+Nsg507
+(lp2159
+g572
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/(03-05-09) Squadron HS-040.jpg
+p2160
+sg514
+VDaniel L Squadron
+p2161
+sg516
+Vsquadron@senate.state.ny.us
+p2162
+sg518
+V/senator/daniel-l-squadron/content/feed
+p2163
+ssVseward
+p2164
+(dp2165
+g480
+Vhttp://www.nysenate.gov/senator/james-l-seward
+p2166
+sg482
+(lp2167
+g432
+ag411
+ag163
+ag319
+ag443
+ag122
+asg484
+V51
+p2168
+sg486
+VSeward
+p2169
+sg488
+Nsg489
+Nsg490
+(lp2170
+sg492
+(dp2171
+VHerkimer District Office
+p2172
+(lp2173
+V235 N. Prospect Street
+p2174
+aVHerkimer, NY 13350
+p2175
+aVPhone: (315) 866-1632
+p2176
+asVAlbany Office
+p2177
+(lp2178
+VRoom 711B Legislative Office Building
+p2179
+aVAlbany, NY 12247
+p2180
+aVPhone: (518) 455-3131
+p2181
+asVDistrict Office
+p2182
+(lp2183
+V41 So. Main Street
+p2184
+aVOneonta, NY 13820
+p2185
+aVPhone: (607) 432-5524
+p2186
+asVCortland District Office
+p2187
+(lp2188
+V4030 West Road
+p2189
+aVCortlandville, NY 13045
+p2190
+aVPhone: (607) 758-9005
+p2191
+assg505
+Vhttp://www.facebook.com/pages/Senator-James-L-Seward/85058127082?ref=ts
+p2192
+sg507
+(lp2193
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/2009 Sen Seward Head Shot.jpg
+p2194
+sg514
+VJames L. Seward
+p2195
+sg516
+Vseward@senate.state.ny.us
+p2196
+sg518
+V/senator/james-l-seward/content/feed
+p2197
+ssVdefrancisco
+p2198
+(dp2199
+g480
+Vhttp://www.nysenate.gov/senator/john-a-defrancisco
+p2200
+sg482
+(lp2201
+g281
+ag16
+ag163
+ag353
+asg484
+V50
+p2202
+sg486
+VDeFrancisco
+p2203
+sg488
+Vhttp://twitter.com/JohnDeFrancisco
+p2204
+sg489
+Nsg490
+(lp2205
+sg492
+(dp2206
+VSyracuse District Office
+p2207
+(lp2208
+V800 State Office Building 
+p2209
+aV333 East Washington Street
+p2210
+aVSyracuse, NY 13202
+p2211
+aV(315) 428-7632
+p2212
+asVAlbany Office
+p2213
+(lp2214
+VRoom 802 Legislative Office Building
+p2215
+aVAlbany, NY 12247
+p2216
+aV(518) 455-3511
+p2217
+assg505
+Vhttp://www.facebook.com/pages/Senator-John-A-DeFrancisco/8776617150
+p2218
+sg507
+(lp2219
+g509
+ag510
+ag511
+asg512
+Vhttp://www.nysenate.gov/files/imagecache/senator_teaser/profile-pictures/SD50_Defrancisco.jpg
+p2220
+sg514
+VJohn A. DeFrancisco
+p2221
+sg516
+Vjdefranc@senate.state.ny.us
+p2222
+sg518
+V/senator/john-defrancisco/content/feed
+p2223
+sst.
