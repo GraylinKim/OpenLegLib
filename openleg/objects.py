@@ -23,9 +23,9 @@ class Bill():
         #Some complications because cosponsors is not a list if there is only one
         cosponsors = d.get('cosponsors', [])
         if isinstance(cosponsors, str) or isinstance(cosponsors, unicode):
-            self.cosponsors = [str(cosponsors)]
+            self.cosponsors = [senators[str(cosponsors).lower()]]
         else:
-            self.cosponsors = [Legislator(co.get('cosponsor')) for co in cosponsors]
+            self.cosponsors = [senators[co.get('cosponsor').lower()] for co in cosponsors]
 
     def __getattr__(self, name):
         if name == 'lastaction':
@@ -70,7 +70,7 @@ class Vote():
 
     def __init__(self,d, billno=None):
         self.bill = billno if billno else getType(d, 'billno', str)
-        self.votedata = dict([voter.get('name'),voter.get('vote')] for voter in d.get('voters',[]))
+        self.votedata = dict([senator[voter.get('name')],voter.get('vote')] for voter in d.get('voters',[]))
         #Currently no indication of vote type, this is a hack, I think its accurate
         self.type = "floor" if len(self.votedata.keys()) > 40 else "committee"
         self.timestamp =  getType(d,'timestamp',int)/1000 if 'timestamp' in d else None
@@ -105,16 +105,48 @@ class Vote():
     def __repr__(self):
         return str(self)
 
+
+#Load the Scraped Data from a data file
+import os, cPickle
+openlegdir = os.path.dirname(os.path.abspath(__file__))
+with open( os.path.join(openlegdir, 'senatorsfilled.dat') ) as f:
+    (committeeInfo, senatorInfo) = cPickle.load(f)
+    
 class Legislator():
-    def __init__(self,lastname):
-        self.name = str(lastname) if lastname else None
+    def __init__(self,d):
+        self.__dict__.update(d)
 
     def __str__(self):
-        return self.name
+        return self.fullname.encode('utf-8').replace('\xe9', 'e')
 
     def __repr__(self):
         return str(self)
+        
+    def __hash__(self):
+        return hash(self.fullname)
+senators = dict([key, Legislator(value)] for key, value in senatorInfo.items())
 
+class Senators():
+    def __init__(self, d):
+        self.__dict__.update(d)
+        
+    def __getitem__(self, items):
+        key = items.replace(' ', '+').lower()
+        return self.__dict__[key]
+senators = Senators(senators)
+
+class Committee():
+    def __init__(self, key, memberNames):
+        self.name = key
+        self.members = [senators[name.lower()] for name in memberNames]
+    
+    def __str__(self):
+        return self.name
+    
+    def __repr__(self):
+        return str(self)
+committees = dict([key, Committee(key, value)] for key, value in committeeInfo.items())
+    
 class Transcript():
     def __init__(self,d):
         self.timestamp = getType(d,'timestamp',str)
