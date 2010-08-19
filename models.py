@@ -6,7 +6,7 @@ def getType(d,key,type,default=None):
 
 ################################################################################
 
-class Bill():
+class Bill(object):
     def __init__(self,d):
 
         self.year = getType(d,'year',int)
@@ -43,7 +43,7 @@ class Bill():
     def __repr__(self):
         return str(self)
 
-class Action():
+class Action(object):
     def __init__(self,d):
         #The last section of an action is the date, split that off from the right
         self.action = str(d['action']).rsplit(' - ', 1)[0]
@@ -62,7 +62,7 @@ class Action():
     def __repr__(self):
         return str(self)
 
-class Vote():
+class Vote(object):
     """
         #TODO: Support Ayes W/R somehow
     """
@@ -104,49 +104,7 @@ class Vote():
 
     def __repr__(self):
         return str(self)
-
-
-#Load the Scraped Data from a data file
-import os, cPickle
-openlegdir = os.path.dirname(os.path.abspath(__file__))
-with open( os.path.join(openlegdir, 'senatorsfilled.dat') ) as f:
-    (committeeInfo, senatorInfo) = cPickle.load(f)
-    
-class Legislator():
-    def __init__(self,d):
-        self.__dict__.update(d)
-
-    def __str__(self):
-        return self.fullname.encode('utf-8').replace('\xe9', 'e')
-
-    def __repr__(self):
-        return str(self)
         
-    def __hash__(self):
-        return hash(self.fullname)
-senators = dict([key, Legislator(value)] for key, value in senatorInfo.items())
-
-class Senators():
-    def __init__(self, d):
-        self.__dict__.update(d)
-        
-    def __getitem__(self, items):
-        key = items.replace(' ', '+').lower()
-        return self.__dict__[key]
-senators = Senators(senators)
-
-class Committee():
-    def __init__(self, key, memberNames):
-        self.name = key
-        self.members = [senators[name.lower()] for name in memberNames]
-    
-    def __str__(self):
-        return self.name
-    
-    def __repr__(self):
-        return str(self)
-committees = dict([key, Committee(key, value)] for key, value in committeeInfo.items())
-    
 class Transcript():
     def __init__(self,d):
         self.timestamp = getType(d,'timestamp',str)
@@ -167,3 +125,51 @@ class Transcript():
 
     def __repr__(self):
         return str(self)
+    
+class Legislator(dict):
+
+    def __str__(self):
+        return self.fullname.encode('utf-8').replace('\xe9', 'e')
+
+    def __repr__(self):
+        return str(self)
+        
+    def __hash__(self):
+        return hash(self.fullname)
+    
+    def __getattr__(self,name):
+        try:
+            return self[name]
+        except KeyError:
+            raise AttributeError(name)
+
+#This has to come after Legislator, but before Committee
+#Load the Scraped Data from a data file until its available somewhere
+from os import path
+import cPickle
+class SenatorDict(object):
+    """Need to transform keys as they come in"""
+    def __init__(self,d):
+        self.legislators = d
+        
+    def __getitem__(self, key):
+        key = key.replace(' ', '+').lower()
+        return self.legislators[key]
+        
+with open( path.join(path.dirname(path.abspath(__file__)), 'senatorsfilled.dat') ) as f:
+    (committees, senators) = cPickle.load(f)
+senators = SenatorDict(dict([key, Legislator(dict(value.items()+[['id',key]]))] for key, value in senators.items()))
+
+class Committee(object):
+    def __init__(self, key, memberNames):
+        self.name = key
+        self.members = [senators[name.lower()] for name in memberNames]
+    
+    def __str__(self):
+        return self.name
+    
+    def __repr__(self):
+        return str(self)
+
+#This obviously comes after committee
+committees = dict([key, Committee(key, value)] for key, value in committees.items())
