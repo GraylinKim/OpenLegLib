@@ -1,21 +1,34 @@
-import copy
 import urllib
 import json
+from copy import deepcopy
 
-
-from . import config,fetch
+from . import OpenLegislationError,fetch
 from decorators import validate
 
 ################################################################################
 # Search
 
+def isiter(arg):
+    try: return iter(arg) != None
+    except TypeError: return false
+
 class OpenLegislationSearch():
 
-    def __init__(self,search=None,mode='object',pagesize=20):
+    def __init__(self,config,search=None,type=None,**options):
+        config.__dict__.update(options.items())
+        self.config = config
+        
+        self.otype = []
         self.options = dict()
-        self.mode=mode
-        self.pagesize=pagesize
-        self._type = []
+        self.__dict__.update(self.config.__dict__)
+        
+        if type:
+            self.type = type if (isiter(type) and not isinstance(type,basestring)) else [type]
+            if set(self.type).issubset(set(self.filtermap.keys())):
+                self.options['type']=' OR '.join(self.type)
+            else:
+                raise OpenLegislationError(self.type)
+            
         if search: self.options['search']=search
 
     def fetch(self,page=1):
@@ -24,55 +37,57 @@ class OpenLegislationSearch():
             return json.load(request)
         else:
             return request.read()
-
-    @validate('*args','in',config.filters.keys(),method=True)
+    
     def type(self,*args):
-        new = copy.deepcopy(self)
-        new.options['type']=' OR '.join(args)
-        new._type = args
-        return new
-
+        if set(args).issubset(set(self.filtermap.keys())):
+            new = deepcopy(self)
+            new.options['type']=' OR '.join(args)
+            new.otype = args
+            return new
+        else:
+            raise OpenLegislationError(args)
+    
+    
     @validate('page','>',0,method=True)
     def url(self,page=1):
         """The request URL, constructed from the search arguments provided"""
-        return config.url+'search?' + '&'.join([
-                key+'='+str(value) for key,value in {
-                    'term':urllib.quote_plus(self._buildString()),
+        return self.baseurl + self.searchpath.format(
+            query=urllib.quote_plus(self._buildString()),
+            format= 'json' if self.mode == 'object' else self.mode)+''.join([
+                '&'+key+'='+str(value) for key,value in {
                     'pageIdx':page,
                     'pageSize':self.pagesize,
-                    'format': 'json' if self.mode == 'object' else self.mode
                 }.iteritems()])
 
     @property
     def filters(self):
         try:
-            return set.union(*[set(config.filters[x]) for x in self._type])
+            return set.union(*[set(self.filtermap[x]) for x in self.otype])
         except TypeError:
-            return config.fields.keys()
+            return self.fields.keys()
 
     def __getattr__(self,name):
         if name in self.filters:
             def process(text):
-                new = copy.deepcopy(self)
+                new = deepcopy(self)
                 new.options[name] = text
                 return new
             return process
         else:
             msg = "%s is not a valid filter for the current type(s): %s"
-            raise AttributeError( msg % (name,', '.join(self._type)) )
+            raise AttributeError( msg % (name,', '.join(self.otype)) )
 
     def __deepcopy__(self,memo):
-        new = OpenLegislationSearch(mode=self.mode, pagesize=self.pagesize)
+        new = OpenLegislationSearch(self.config,type=list(self.otype))
         new.options = dict(self.options)
-        new._type = self._type
         return new
 
     def _buildString(self):
         options = list()
         for alias,value in self.options.iteritems():
-            options.append("%s:(%s)" % (config.fields[alias],value))
+            options.append("%s:(%s)" % (self.fields[alias],value))
         return ' AND '.join(options)
-
+    
 ################################################################################
 # Search Sets
 
