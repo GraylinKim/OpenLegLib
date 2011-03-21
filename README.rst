@@ -1,6 +1,3 @@
 Provides a simple interface to the open legislation API
 
-Check out `the documentation <http://shadesofgraylin.net/nyss_openlegislation>`_
-for more information.
-
-EDIT: Documentation not up to date
+Currently out of date due to unversioned changes to the Open Legislation API

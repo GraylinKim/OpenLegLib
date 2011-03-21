@@ -1,3 +1,33 @@
+################################################################################
+# Exceptions
+
+class OpenLegislationError(Exception):
+    """
+    Exception raised when OpenLegislation classes or functions are given
+    invalid input or are being used inappropriately.
+    """
+    
+################################################################################
+# Utility Functions
+
+import urllib2
+
+def fetch(url):
+    print url
+    request = urllib2.urlopen(url,timeout=5)
+    if request.getcode() != 200:
+        msg = 'Error Code: %i on request'
+        raise OpenLegislationError(msg % request.getcode())
+    return request
+
+#I find myself often requiring data returned converted with defaults
+def getType(d,key,type,default=None):
+    return type(d.get(key,default)) if d.get(key,default) else default
+
+
+################################################################################
+# Decorators
+
 import inspect
 from decorator import decorator
 
@@ -51,4 +81,3 @@ def validate(arg,op,valid,method=False):
             return func(*args,**kwargs)
 
     return wrapper
-

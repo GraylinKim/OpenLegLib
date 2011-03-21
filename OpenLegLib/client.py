@@ -1,14 +1,14 @@
 import json
 import urllib
 
-from . import config,OpenLegislationError,fetch
-from decorators import validate
-from search import OpenLegislationSearch
+from OpenLegLib.config import config
+from OpenLegLib.search import OpenLegislationSearch
+from OpenLegLib.utils import validate,fetch,OpenLegislationError
 
 ################################################################################
 # OpenLegislation
 
-class OpenLegislation:
+class OpenLegClient(object):
 
     def __init__(self,mode='object',pagesize=20):
         self.configure(mode=mode,pagesize=pagesize)

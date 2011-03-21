@@ -1,10 +1,7 @@
-import copy
-import urllib
-import json
+import copy, urllib, json
 
-
-from . import config,fetch
-from decorators import validate
+from OpenLegLib.config import config
+from OpenLegLib.utils import validate,fetch
 
 ################################################################################
 # Search

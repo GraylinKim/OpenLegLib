@@ -1,10 +1,5 @@
 from datetime import date
-
-#I find myself often requiring data returned converted with defaults
-def getType(d,key,type,default=None):
-    return type(d.get(key,default)) if d.get(key,default) else default
-
-################################################################################
+from OpenLegislation.utils import getType
 
 class Bill(object):
     def __init__(self,d):
